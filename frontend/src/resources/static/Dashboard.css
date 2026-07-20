@@ -1,0 +1,151 @@
+/* Contenedor Principal */
+.p-6 {
+  background-color: #f8fafc;
+  min-height: 100vh;
+  font-family: 'Inter', sans-serif;
+}
+
+/* Encabezado y Toolbar */
+.text-2xl {
+  color: #1e293b;
+  margin-bottom: 1.5rem;
+}
+
+.flex.gap-4 {
+  display: flex;
+  gap: 1rem;
+  margin-bottom: 1.5rem;
+}
+
+.search-input, .filter-select {
+  border: 1px solid #e2e8f0;
+  padding: 0.5rem 1rem;
+  border-radius: 0.5rem;
+  outline: none;
+  transition: border-color 0.2s;
+}
+
+.search-input:focus, .filter-select:focus {
+  border-color: #f97316; /* Naranja MediExpress */
+}
+
+/* Tarjeta de la Tabla */
+.bg-white.rounded-xl {
+  background: white;
+  border-radius: 0.75rem;
+  box-shadow: 0 4px 6px -1px rgba(0, 0, 0, 0.1);
+  display: flex;
+  overflow: hidden;
+}
+
+/* Estilos de la Tabla */
+.flex-1.table-collapse {
+  width: 100%;
+}
+
+th {
+  text-align: left;
+  padding: 1rem;
+  background-color: #f1f5f9;
+  color: #64748b;
+  font-weight: 600;
+  font-size: 0.875rem;
+  text-transform: uppercase;
+  letter-spacing: 0.025em;
+}
+
+td {
+  padding: 1rem;
+  border-bottom: 1px solid #f1f5f9;
+  color: #334155;
+  vertical-align: middle;
+}
+
+tr:hover {
+  background-color: #f8fafc;
+}
+
+/* Badges de Roles */
+.rounded-full {
+  padding: 0.25rem 0.75rem;
+  font-size: 0.75rem;
+  font-weight: 700;
+  border-radius: 9999px;
+}
+
+.bg-purple-100 {
+  background-color: #f3e8ff;
+  color: #7e22ce;
+}
+
+.bg-blue-100 {
+  background-color: #dbeafe;
+  color: #1d4ed8;
+}
+
+/* Botones de Acción */
+.hover\:bg-orange-100:hover {
+  background-color: #fff7ed;
+  color: #ea580c;
+}
+
+.hover\:bg-red-100:hover {
+  background-color: #fef2f2;
+  color: #dc2626;
+}
+
+.p-2.rounded {
+  padding: 0.5rem;
+  border-radius: 0.375rem;
+  transition: all 0.2s;
+  border: none;
+  background: transparent;
+  cursor: pointer;
+}
+
+/* Panel Lateral */
+.w-64.bg-gray-50 {
+  width: 16rem;
+  background-color: #f9fafb;
+  padding: 1.5rem;
+  border-left: 1px solid #e5e7eb;
+}
+.btn-add-admin{
+    background: #f97316;
+    color: #ffffff;
+    padding: 0.5rem 1rem;
+    border-radius: 13px ;
+}
+.btn-orange {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  gap: 0.5rem;
+  width: 100%;
+  background-color: #f97316;
+  color: white;
+  padding: 0.75rem;
+  border-radius: 0.5rem;
+  font-weight: 600;
+  transition: background 0.2s;
+}
+
+.btn-orange:hover {
+  background-color: #ea580c;
+}
+
+/* Mensajes de Estado */
+.text-center.p-10 {
+  padding: 2.5rem;
+  text-align: center;
+  color: #94a3b8;
+}
+
+/* Contenedor principal para centrar o alinear la barra */
+.search-container {
+    display: flex;
+    justify-content: center; /* Centra la barra horizontalmente (cambia a flex-start si la quieres a la izquierda) */
+    align-items: center;
+    margin: 20px 0;          /* Espaciado arriba y abajo */
+}
+

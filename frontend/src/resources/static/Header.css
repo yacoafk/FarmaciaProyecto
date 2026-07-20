@@ -1,0 +1,129 @@
+
+header {
+  width: 100%;
+  background: linear-gradient(90deg, #f97316 0%, #ea580c 100%);
+  display: flex;
+  justify-content: center;
+  box-shadow: 0 4px 10px rgba(0,0,0,0.1);
+}
+
+.header-container {
+  width: 100%;
+  max-width: 1400px; /* Un poco más ancho para dar aire */
+  padding: 15px 5%; 
+  /* Sistema de 3 columnas para centrado perfecto */
+  display: grid;
+  grid-template-columns: 1fr auto 1fr; 
+  align-items: center;
+}
+
+/* Grupo Izquierdo */
+.header-left {
+  display: flex;
+  justify-content: flex-start;
+}
+
+/* Grupo Central */
+.header-center {
+  display: flex;
+  justify-content: center;
+}
+
+.header-center a {
+  text-decoration: none !important;
+}
+
+/* Grupo Derecho */
+.header-right {
+  display: flex;
+  justify-content: flex-end;
+  gap: 1.5rem; /* Espacio entre los 3 iconos */
+}
+
+/* Quitar subrayados de todos los links del header */
+.header-container a {
+  text-decoration: none !important;
+  color: white !important;
+}
+
+.brand-title {
+  font-family: 'Plus Jakarta Sans', sans-serif;
+  font-weight: 800;
+  font-size: 1.8rem;
+  letter-spacing: -0.04em;
+}
+
+.brand-title {
+    font-family: 'Plus Jakarta Sans', sans-serif;
+}
+
+/* Estilo para los links de navegación */
+.nav-link {
+    display: flex;
+    align-items: center;
+    gap: 0.5rem;
+    color: white;
+    text-decoration: none;
+    font-size: 0.95rem;
+    opacity: 0.9;
+    transition: all 0.2s ease-in-out;
+}
+
+.nav-link:hover {
+    opacity: 1;
+    color: #ffedd5; /* un naranja muy claro (orange-100) */
+}
+
+/* Opcional: Efecto de desenfoque en el fondo si el navegador lo soporta */
+header.sticky {
+    backdrop-filter: blur(8px);
+    background-color: rgba(234, 88, 12, 0.95); /* Orange-600 con transparencia */
+}
+/* ========================= */
+/* TABLET */
+/* ========================= */
+@media (max-width: 768px) {
+
+  .header-container {
+    grid-template-columns: 1fr;
+    gap: 15px;
+    text-align: center;
+  }
+
+  .header-left,
+  .header-center,
+  .header-right {
+    justify-content: center;
+  }
+
+  .brand-title {
+    font-size: 1.5rem;
+  }
+
+}
+
+/* ========================= */
+/* CELULAR */
+/* ========================= */
+@media (max-width: 480px) {
+
+  .header-container {
+    padding: 12px 4%;
+    gap: 10px;
+  }
+
+  .brand-title {
+    font-size: 1.2rem;
+  }
+
+  .header-right {
+    gap: 1rem;
+    flex-wrap: wrap;
+  }
+
+  .nav-link {
+    font-size: 0.85rem;
+  }
+
+}
+

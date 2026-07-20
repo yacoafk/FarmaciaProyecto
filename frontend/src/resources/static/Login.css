@@ -1,0 +1,256 @@
+/* Login.css */
+
+/* 1. Contenedor principal: Centrado absoluto en la pantalla */
+.login-page-wrapper {
+  display: flex;
+  flex-direction: column;
+  min-height: 100vh;
+  width: 100%;
+  font-family: 'Plus Jakarta Sans', sans-serif; /* Usando tu fuente global */
+  background-color: var(--bg-soft2); /* El fondo suave beige/rosa de la imagen */
+}
+
+.login-main {
+  flex: 1;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  padding: 40px 20px;
+}
+
+/* 2. La Tarjeta de Login */
+.login-card {
+  box-sizing: border-box; /* También para la tarjeta */
+  background: white;
+  width: 100%;
+  max-width: 400px;
+  border-radius: 28px;
+  padding: 40px; /* Reducimos ligeramente de 50px a 40px para dar más espacio a los inputs */
+  box-shadow: 0 20px 50px rgba(0, 0, 0, 0.04);
+  border: 1px solid #f1f1f0;
+  overflow: hidden; /* Evita cualquier fuga visual */
+}
+
+/* 3. El Círculo Naranja del Logo */
+.logo-circle {
+  width: 90px;
+  height: 90px;
+  background-color: var(--primary-orange); /* Tu naranja primario */
+  border-radius: 50%;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  margin: 0 auto 10px; /* Centrado horizontalmente */
+  box-shadow: 0 10px 20px rgba(249, 115, 22, 0.2);
+}
+
+.logo-circle svg {
+  width: 45px;
+  height: 45px;
+  color: white;
+  fill: white; /* Corazón blanco relleno */
+}
+
+/* 4. Títulos (MediExpress y Panel) */
+.login-card h1 {
+  color: #1c1917; /* Gris muy oscuro */
+  font-weight: 800;
+  font-size: 1.9rem;
+  letter-spacing: -0.03em;
+  margin-bottom: 5px;
+}
+
+.login-subtitle {
+  color: #6b7280; /* Gris medio */
+  font-size: 0.9rem;
+  font-weight: 400;
+  margin-bottom: 10px;
+  margin-top: -5px;
+
+}
+
+/* 5. Estilo de los Labels */
+.login-label {
+  display: block;
+  font-size: 0.9rem;
+  font-weight: 600;
+  color: #4b5563;
+  margin-bottom: 8px;
+  text-align: left;
+}
+
+/* 6. Los Inputs Minimalistas con Icono Integrado */
+.input-group {
+  position: relative;
+  width: 100%;
+}
+
+.login-input {
+  /* SOLUCIÓN AL DESBORDE: Incluye padding y borde dentro del 100% */
+  box-sizing: border-box; 
+  width: 100%;
+  padding: 14px 16px 14px 46px; /* Ajustamos padding derecho a 16px para mejor simetría */
+  background-color: white;
+  border: 1.5px solid #e5e7eb;
+  border-radius: 14px;
+  font-size: 1rem;
+  color: #1f2937;
+  transition: all 0.2s ease;
+  outline: none;
+  /* Asegura que no haya estilos extraños de navegadores */
+  display: block; 
+}
+
+/* Efecto Focus: borde naranja y sombra suave */
+.login-input:focus {
+  border-color: var(--primary-orange);
+  box-shadow: 0 0 0 4px rgba(249, 115, 22, 0.08);
+}
+
+/* Estilo para el Placeholder */
+.login-input::placeholder {
+  color: #9ca3af; /* Gris claro para el placeholder */
+  font-weight: 400;
+}
+
+/* Los Iconos DENTRO del Input */
+.input-icon {
+  position: absolute;
+  left: 16px;
+  top: 50%;
+  transform: translateY(-50%); /* Centrado vertical absoluto */
+  width: 20px;
+  height: 20px;
+  color: #9ca3af; /* Gris claro por defecto */
+  pointer-events: none; /* No interfiere con el clic en el input */
+  transition: color 0.2s ease;
+}
+
+/* Al hacer focus en el input, el icono cambia a naranja */
+.login-input:focus + .input-icon {
+  color: var(--primary-orange);
+}
+
+/* 7. El Botón Naranja Sólido */
+.login-button {
+  width: 100%;
+  background-color: var(--primary-orange);
+  color: white;
+  padding: 16px;
+  border-radius: 14px;
+  font-weight: 700;
+  font-size: 1.1rem;
+  border: none;
+  cursor: pointer;
+  transition: background-color 0.2s ease, transform 0.1s ease;
+  margin-top: 15px;
+}
+
+.login-button:hover {
+  background-color: var(--secondary-orange); /* Naranja más oscuro al hover */
+}
+
+.login-button:active {
+  transform: scale(0.98); /* Efecto de clic */
+}
+
+/* Contenedor del input debe ser relativo */
+.input-group {
+  position: relative;
+  display: flex;
+  align-items: center;
+}
+
+/* El ojo a la derecha */
+.input-group button {
+  position: absolute;
+  right: 12px;
+  background: none;
+  border: none;
+  cursor: pointer;
+  display: flex;
+  align-items: center;
+  z-index: 10;
+}
+
+/* Ajuste para que el texto de la contraseña no choque con el ojo */
+.login-input {
+  padding-right: 40px !important; 
+}
+/* =========================
+   TABLET
+========================= */
+
+@media (max-width: 768px) {
+
+  .login-main {
+    padding: 15px;
+  }
+
+  .login-card {
+    max-width: 380px;
+    padding: 30px;
+  }
+
+  .logo-circle {
+    width: 75px;
+    height: 75px;
+  }
+
+  .logo-circle svg {
+    width: 38px;
+    height: 38px;
+  }
+
+  .login-card h1 {
+    font-size: 1.6rem;
+  }
+
+}
+
+/* =========================
+   CELULAR
+========================= */
+
+@media (max-width: 480px) {
+
+  .login-main {
+    padding: 10px;
+  }
+
+  .login-card {
+    width: 100%;
+    padding: 20px;
+    border-radius: 20px;
+  }
+
+  .logo-circle {
+    width: 65px;
+    height: 65px;
+  }
+
+  .logo-circle svg {
+    width: 32px;
+    height: 32px;
+  }
+
+  .login-card h1 {
+    font-size: 1.4rem;
+  }
+
+  .login-subtitle {
+    font-size: 0.85rem;
+  }
+
+  .login-input {
+    font-size: 0.9rem;
+    padding-top: 12px;
+    padding-bottom: 12px;
+  }
+
+  .login-button {
+    font-size: 1rem;
+    padding: 14px;
+  }
+
+}

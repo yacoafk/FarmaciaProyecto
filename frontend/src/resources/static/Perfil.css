@@ -1,0 +1,445 @@
+.perfil-main {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  width: 100%;
+}
+
+/* Contenedor principal */
+.perfil-container {
+  background: linear-gradient(to bottom, #fffaf5, #ffffff);
+  min-height: 100vh;
+}
+
+/* La tarjeta blanca */
+.perfil-card {
+  background: white;
+  border-radius: 40px;
+  box-shadow: 0 25px 50px -12px rgba(0, 0, 0, 0.08);
+  overflow: hidden; /* Para que el banner no se salga de las esquinas redondeadas */
+  border: 1px solid rgba(0, 0, 0, 0.05);
+}
+
+/* Sección superior con degradado naranja */
+.perfil-banner {
+  background: linear-gradient(135deg, #f97316 0%, #ea580c 100%);
+  padding: 10px 10px;
+  text-align: center;
+  color: white;
+  position: relative; /* Necesario para ubicar el botón Volver */
+}
+
+.user-avatar-container {
+  width: 80px;  /* Ajusta el tamaño según tu diseño */
+  height: 80px;
+  background-color: white; /* El círculo blanco que ves en la imagen */
+  border-radius: 50%;
+  display: flex; /* Crucial para centrar el icono */
+  align-items: center;
+  justify-content: center;
+  margin: 0 auto; /* Para centrar el círculo en el banner */
+  overflow: hidden;
+  border: 4px solid rgba(255, 255, 255, 0.3); /* Un pequeño borde para que resalte */
+}
+.user-avatar-container svg {
+  width: 50px;
+  height: 50px;
+  stroke-width: 2;
+  color: #ea580c;/* Hace las líneas del icono más visibles */
+}
+
+.user-name {
+  font-size: 2.2rem;
+  font-weight: 800;
+  margin-bottom: 5px;
+  margin-top: -5px;
+}
+
+.user-email {
+  font-size: 1.1rem;
+  opacity: 0.9;
+}
+
+/* Opciones del menú */
+.perfil-options {
+  padding: 20px;
+  display: flex;
+  flex-direction: column;
+  gap: 0; /* Controlamos la separación limpia mediante margin-bottom en los items */
+}
+
+/* Base unificada para enlaces y botones del menú */
+.perfil-option-item {
+  display: flex;
+  align-items: center;
+  gap: 20px;
+  padding: 14px;
+  background: #fffaf5;
+  border-radius: 25px;
+  margin-bottom: 16px;
+  transition: all 0.3s ease;
+  text-decoration: none;
+  box-sizing: border-box;
+  width: 100%;
+  border: none;              /* 🚫 Elimina bordes nativos de botones */
+  outline: none;             /* 🚫 Elimina el contorno negro al hacer focus/click */
+  cursor: pointer;
+  font-family: inherit;      /* Evita cambios de letra en botones */
+  text-align: left;          /* Realinea el texto a la izquierda */
+  -webkit-appearance: none;  /* Reseteo para navegadores webkit */
+  -moz-appearance: none;     /* Reseteo para Firefox */
+}
+
+.perfil-option-item:hover {
+  background: #ffedd5;
+  transform: translateX(10px);
+}
+
+.option-icon-box {
+  width: 60px;
+  height: 60px;
+  background: white;
+  border-radius: 35px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  box-shadow: 0 4px 6px rgba(0,0,0,0.05);
+  flex-shrink: 0; /* Evita que el círculo se deforme si el contenedor se achica */
+}
+
+.option-icon-box svg {
+  color: #f97316;
+  width: 30px;
+  height: 30px;
+}
+
+.option-text {
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+}
+
+.option-text h3 {
+  font-size: 1.4rem;
+  font-weight: 700;
+  color: #111827;
+  margin: 0;
+  line-height: 1.2;
+}
+
+.option-text p {
+  color: #6b7280;
+  margin: 4px 0 0 0;
+  font-size: 0.95rem;
+}
+
+.option-arrow {
+  margin-left: auto;
+  font-size: 2.5rem;
+  color: #f97316;
+  font-weight: bold;
+  text-shadow: 1px 0 #f97316, -1px 0 #f97316, 0 1px #f97316, 0 -1px #f97316;
+  line-height: 1;
+  display: inline-flex;
+  align-items: center;
+}
+
+/* Botón de Logout */
+.btn-logout {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  gap: 12px;
+  width: 100%;
+  background: white;
+  color: #ef4444;
+  border: 2px solid #ef4444;
+  padding: 10px;
+  border-radius: 25px;
+  margin-top: 10px;
+  font-size: 1.3rem;
+  font-weight: 700;
+  cursor: pointer;
+  transition: all 0.3s ease;
+  outline: none;
+}
+
+.btn-logout:hover {
+  background: #fef2f2;
+  transform: scale(0.98);
+}
+
+/* ==========================================
+   ESTILOS PARA DIRECCIONES Y CONFIGURACIÓN
+   ========================================== */
+
+.subview-container {
+  padding: 30px;
+  animation: fadeIn 0.3s ease;
+}
+
+.subview-title {
+  font-size: 1.6rem;
+  font-weight: 800;
+  color: #111827;
+  margin-bottom: 20px;
+  text-align: center;
+}
+
+/* Botón flotante para regresar en el banner */
+.btn-back-perfil {
+  position: absolute;
+  top: 25px;
+  left: 25px;
+  background: rgba(255, 255, 255, 0.2);
+  border: 1px solid rgba(255, 255, 255, 0.4);
+  color: white;
+  padding: 8px 16px;
+  border-radius: 20px;
+  cursor: pointer;
+  display: flex;
+  align-items: center;
+  gap: 8px;
+  font-weight: 600;
+  transition: all 0.2s ease;
+  outline: none;
+}
+
+.btn-back-perfil:hover {
+  background: white;
+  color: #ea580c;
+}
+
+/* Listado de Direcciones */
+.direcciones-list {
+  max-height: 250px;
+  overflow-y: auto;
+  margin-bottom: 25px;
+  padding-right: 5px;
+}
+
+.direccion-item-box {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  background: #fffaf5;
+  border: 1px solid #ffedd5;
+  padding: 16px;
+  border-radius: 20px;
+  margin-bottom: 12px;
+}
+
+.direccion-info {
+  display: flex;
+  flex-direction: column;
+  gap: 4px;
+}
+
+.dir-badge {
+  background: #ea580c;
+  color: white;
+  font-size: 0.75rem;
+  font-weight: 700;
+  padding: 2px 10px;
+  border-radius: 10px;
+  width: fit-content;
+  text-transform: uppercase;
+}
+
+.direccion-info h4 {
+  margin: 4px 0 0 0;
+  font-size: 1.1rem;
+  color: #111827;
+}
+
+.direccion-info p {
+  margin: 0;
+  color: #6b7280;
+  font-size: 0.95rem;
+}
+
+.btn-delete-dir {
+  background: transparent;
+  border: none;
+  color: #ef4444;
+  cursor: pointer;
+  padding: 8px;
+  border-radius: 50%;
+  transition: background 0.2s;
+  outline: none;
+}
+
+.btn-delete-dir:hover {
+  background: #fef2f2;
+}
+
+/* Formularios de las Sub-vistas */
+.subview-form {
+  background: #ffffff;
+  border: 2px dashed #ffedd5;
+  padding: 20px;
+  border-radius: 25px;
+}
+
+.subview-form h3 {
+  margin-top: 0;
+  margin-bottom: 15px;
+  font-size: 1.2rem;
+  color: #ea580c;
+}
+
+.form-group-row {
+  display: flex;
+  gap: 12px;
+  margin-bottom: 12px;
+}
+
+.subview-form label {
+  display: block;
+  font-size: 0.9rem;
+  font-weight: 700;
+  color: #374151;
+  margin-bottom: 5px;
+}
+
+.subview-form input {
+  width: 100%;
+  padding: 12px 16px;
+  border: 1px solid #e5e7eb;
+  background: #fffaf5;
+  border-radius: 15px;
+  margin-bottom: 12px;
+  font-size: 1rem;
+  box-sizing: border-box;
+  outline: none;
+}
+
+.subview-form input:focus {
+  border-color: #f97316;
+  background: white;
+}
+
+.btn-submit-subview {
+  width: 100%;
+  background: linear-gradient(135deg, #f97316 0%, #ea580c 100%);
+  color: white;
+  border: none;
+  padding: 14px;
+  border-radius: 18px;
+  font-size: 1.1rem;
+  font-weight: 700;
+  cursor: pointer;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  gap: 8px;
+  box-shadow: 0 4px 10px rgba(234, 88, 12, 0.2);
+  outline: none;
+}
+
+.btn-submit-subview:hover {
+  transform: translateY(-2px);
+  box-shadow: 0 6px 15px rgba(234, 88, 12, 0.3);
+}
+
+.save-btn {
+  background: linear-gradient(135deg, #10b981 0%, #059669 100%);
+  box-shadow: 0 4px 10px rgba(5, 150, 105, 0.2);
+}
+
+.mensaje-alerta-config {
+  padding: 12px;
+  border-radius: 15px;
+  text-align: center;
+  font-weight: 600;
+  margin-bottom: 15px;
+  background: #f0fdf4;
+  color: #166534;
+  border: 1px solid #bbf7d0;
+}
+
+.loading-container {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  min-height: 50vh;
+  font-size: 1.3rem;
+  font-weight: 700;
+  color: #ea580c;
+}
+
+@keyframes fadeIn {
+  from { opacity: 0; transform: translateY(5px); }
+  to { opacity: 1; transform: translateY(0); }
+}
+
+/* =========================
+   MEDIA QUERIES (RESPONSIVE)
+========================= */
+
+@media (max-width: 768px) {
+  .perfil-card {
+    border-radius: 25px;
+  }
+  .user-name {
+    font-size: 1.8rem;
+  }
+  .user-email {
+    font-size: 1rem;
+  }
+  .option-text h3 {
+    font-size: 1.2rem;
+  }
+  .option-arrow {
+    font-size: 2rem;
+  }
+}
+
+@media (max-width: 480px) {
+  .perfil-banner {
+    padding: 20px 10px;
+  }
+  .user-avatar-container {
+    width: 65px;
+    height: 65px;
+  }
+  .user-avatar-container svg {
+    width: 40px;
+    height: 40px;
+  }
+  .user-name {
+    font-size: 1.5rem;
+  }
+  .user-email {
+    font-size: 0.9rem;
+  }
+  .perfil-options {
+    padding: 12px;
+  }
+  .perfil-option-item {
+    gap: 12px;
+    padding: 12px;
+    margin-bottom: 12px;
+  }
+  .option-icon-box {
+    width: 45px;
+    height: 45px;
+  }
+  .option-icon-box svg {
+    width: 22px;
+    height: 22px;
+  }
+  .option-text h3 {
+    font-size: 1rem;
+  }
+  .option-text p {
+    font-size: 0.85rem;
+  }
+  .option-arrow {
+    font-size: 1.5rem;
+  }
+  .btn-logout {
+    font-size: 1rem;
+    padding: 12px;
+  }
+}

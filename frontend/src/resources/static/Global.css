@@ -1,0 +1,139 @@
+@import url('https://fonts.googleapis.com/css2?family=Plus+Jakarta+Sans:wght@400;600;800&display=swap');
+
+:root {
+  --primary-orange: #f97316;
+  --secondary-orange: #ea580c;
+  --bg-soft: #faf9f9;
+  --bg-soft2: #fff6e8;
+
+  /* Extras que combinan */
+  --white: #ffffff;
+  --gray-light: #f5f5f4;
+  --gray-border: #e7e5e4;
+  --text-dark: #1c1917;
+  --text-soft: #78716c;
+  --danger: #ef4444;
+  --success: #22c55e;
+
+  --shadow-soft: 0 8px 30px rgba(0,0,0,0.06);
+  --shadow-hover: 0 10px 35px rgba(249, 115, 22, 0.18);
+}
+
+/* Resets globales para ocupar toda la pantalla sin bordes blancos */
+*, *::before, *::after {
+  box-sizing: border-box;
+}
+
+html {
+  height: 100%;
+  width: 100%;
+  background: var(--bg-soft);
+   overflow-x: hidden;
+}
+  
+body {
+  margin: 0;
+  padding: 0;
+  height: 100%;
+  width: 100%;
+  background: var(--bg-soft);
+  overflow-x: hidden;
+  font-family: 'Plus Jakarta Sans', sans-serif;
+}
+
+#root {
+  height: 100%;
+  width: 100%;
+  background: inherit;
+  display: flex;
+  flex-direction: column;
+}
+
+
+/* Contenedor principal para darle buen espacio */
+.search-container {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    width: 100%;
+    margin: 28px 0;
+}
+
+/* Estilos del input de búsqueda mejorado */
+.input-search {
+    width: 100%;
+    max-width: 600px;         /* 🚀 Mucho más largo para que sea el protagonista */
+    padding: 14px 22px;       /* Más alto y espacioso por dentro */
+    font-size: 16px;          /* Evita zoom automático en iOS */
+    font-weight: 500;         /* Texto un poquito más firme */
+    color: #2d3748;           /* Un gris oscuro elegante, no negro plano */
+    background-color: #f8fafc; /* Fondo ligeramente grisáceo premium cuando está en reposo */
+    border: 2px solid #e2e8f0; /* Borde más grueso pero muy suave */
+    border-radius: 50px;       /* 💊 Bordes completamente redondeados (estilo cápsula moderno) */
+    box-shadow: 0 4px 12px rgba(0, 0, 0, 0.03); /* Sombra suave y dispersa */
+    letter-spacing: 0.3px;
+    transition: all 0.4s cubic-bezier(0.4, 0, 0.2, 1); /* Transición premium más fluida */
+}
+
+/* Texto de fondo (Placeholder) */
+.input-search::placeholder {
+    color: #a0aec0;
+    font-style: normal;       /* Más limpio sin cursiva */
+    font-weight: 400;
+}
+
+/* Efecto Hover (Pasar el mouse) */
+.input-search:hover {
+    border-color: #cbd5e1;
+    background-color: #ffffff; /* Se aclara al pasar el mouse */
+    box-shadow: 0 6px 16px rgba(0, 0, 0, 0.06);
+}
+
+/* 🔥 Efecto Focus Absolutamente Vistoso */
+.input-search:focus {
+    outline: none;
+    max-width: 650px;          /* ⚡ ¡Efecto expansivo! Crece ligeramente a lo largo al hacer clic */
+    background-color: #ffffff; /* Fondo blanco puro */
+    border-color: #3b82f6;     /* Azul vibrante moderno (cámbialo por el de tu marca si deseas) */
+    /* Brillo envolvente de alta calidad */
+    box-shadow: 0 0 0 4px rgba(59, 130, 246, 0.15), 
+                0 10px 25px rgba(59, 130, 246, 0.08); 
+}
+/* =========================
+   TABLET
+========================= */
+
+@media (max-width: 768px) {
+
+  .search-container {
+    padding: 0 15px;
+  }
+
+  .input-search {
+    max-width: 100%;
+    font-size: 15px;
+    padding: 12px 18px;
+  }
+
+  .input-search:focus {
+    max-width: 100%;
+  }
+
+}
+
+/* =========================
+   CELULAR
+========================= */
+
+@media (max-width: 480px) {
+
+  .search-container {
+    padding: 0 10px;
+  }
+
+  .input-search {
+    font-size: 14px;
+    padding: 12px 16px;
+  }
+
+}

@@ -1,0 +1,334 @@
+/* Contenedor Principal */
+.ventas-container {
+    height: 100vh; /* Altura total de la pantalla */
+    background-color: #fdf2f0; 
+    display: flex;
+    flex-direction: column;
+    font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif; 
+    overflow: hidden; /* Evita scroll doble en la página */
+}
+
+/* AREA DE CONTENIDO (SIDEBAR Y TABLAS) */
+.ventas-content {
+    display: flex; 
+    gap: 20px;
+    padding: 20px;
+    flex: 1; /* Ocupa todo el espacio debajo del header */
+    min-height: 0; /* Importante para que el scroll interno funcione */
+}
+
+/* BARRA LATERAL IZQUIERDA */
+.ventas-sidebar {
+    width: 280px; 
+    display: flex;
+    flex-direction: column;
+    gap: 15px;
+    padding: 25px;
+    background: white;
+    border-radius: 30px;
+    box-shadow: 0 10px 25px rgba(0,0,0,0.05);
+}
+
+/* BOTONES DEL SIDEBAR */
+.ventas-sidebar button {
+    padding: 15px;
+    border-radius: 20px;
+    border: none;
+    cursor: pointer;
+    font-weight: 700;
+    transition: transform 0.2s;
+}
+.btn-anular { background: #f97316; color: white; }
+.btn-actualizar { background: #004d4d; color: white; }
+.btn-buscar { background: white; color: #008000; border: 2px solid #008000 !important; }
+
+
+/* AREA PRINCIPAL DE TABLAS */
+.ventas-main {
+    flex: 1; 
+    display: flex;
+    flex-direction: column;
+    gap: 20px;
+    width: 100%; /* Asegura que el contenedor principal ocupe todo el ancho */
+}
+
+/* CADA UNA DE LAS DOS TABLAS */
+.table-wrapper {
+    background: white;
+    border-radius: 30px;
+    padding: 20px;
+    box-shadow: 0 10px 25px rgba(0,0,0,0.05);
+    flex: 1; 
+    width: 100%; /* Fuerza a que el recuadro blanco se estire de izquierda a derecha */
+    box-sizing: border-box; /* Evita que el padding extra de las tablas las saque de la pantalla */
+    overflow-y: auto;
+    min-height: 0;
+}
+
+table {
+    width: 100%; /* La tabla DEBE ocupar el 100% del wrapper */
+    border-collapse: separate;
+    border-spacing: 0;
+}
+
+thead th {
+    background: #f97316;
+    color: white;
+    padding: 15px;
+    font-weight: bold;
+    text-align: center;
+    position: sticky;
+    top: 0;
+}
+
+/* Bordes redondeados para el header */
+thead th:first-child { border-top-left-radius: 15px; }
+thead th:last-child { border-top-right-radius: 15px; }
+
+tbody td {
+    padding: 12px;
+    text-align: center;
+    border-bottom: 2px solid white; 
+    background: #f1f5f9; 
+    color: #333;
+}
+
+.filter-group {
+    display: flex;
+    flex-direction: column;
+    gap: 10px;
+}
+.filter-group input {
+    padding: 12px;
+    border-radius: 12px;
+    border: 1px solid #ddd;
+    background: #f1f5f9;
+}
+
+button.btn-cerrar, 
+.btn-cerrar {
+    background-color: #dc2626 !important; /* Rojo sólido de fondo */
+    color: #ffffff !important;            /* Texto blanco para que contraste */
+    border: 1.5px solid #dc2626 !important;
+    border-radius: 8px;
+    padding: 10px 20px;
+    font-size: 15px;
+    font-weight: 600;
+    cursor: pointer;
+    margin-top: auto;
+    transition: all 0.25s ease-in-out;
+}
+
+/* Efecto al pasar el mouse (Hover) */
+button.btn-cerrar:hover,
+.btn-cerrar:hover {
+    background-color: #b91c1c !important; /* Un rojo un poco más oscuro al pasar el mouse */
+    border-color: #b91c1c !important;
+    box-shadow: 0 4px 12px rgba(185, 28, 28, 0.3);
+}
+
+/* Por defecto, las tarjetas están ocultas en PC */
+.tarjetas-movil {
+  display: none;
+}
+
+/* ==========================================
+   TABLET
+========================================== */
+@media (max-width: 992px){
+
+  .ventas-content{
+    flex-direction: column;
+    padding: 15px;
+  }
+
+  .ventas-sidebar{
+    width: 100%;
+    border-radius: 20px;
+  }
+
+  .ventas-main{
+    width: 100%;
+  }
+
+  .table-wrapper{
+    overflow-x: auto;
+  }
+
+  table{
+    min-width: 800px;
+  }
+
+}
+
+/* ==========================================
+   CELULAR 
+========================================== */
+@media (max-width: 768px) {
+  .ventas-container {
+    height: auto;
+    min-height: 100vh;
+    overflow: visible;
+  }
+
+  .ventas-content {
+    flex-direction: column;
+    gap: 15px;
+    padding: 10px;
+  }
+
+  .ventas-sidebar {
+    width: 100%;
+    padding: 15px;
+    border-radius: 16px;
+    box-sizing: border-box;
+  }
+
+  .ventas-sidebar button {
+    width: 100%;
+  }
+
+  .filter-group input {
+    width: 100%;
+    box-sizing: border-box;
+  }
+
+  .table-wrapper {
+    padding: 15px;
+    border-radius: 16px;
+    overflow: visible; /* Ya no necesita scroll horizontal la envoltura */
+  }
+
+  /* 1. OCULTAMOS LA TABLA TRADICIONAL EN MÓVIL */
+  .tabla-escritorio {
+    display: none;
+  }
+
+  /* 2. ACTIVAMOS LAS TARJETAS EN MÓVIL */
+  .tarjetas-movil {
+    display: flex;
+    flex-direction: column;
+    gap: 12px;
+    margin-top: 10px;
+  }
+
+  /* --- DISEÑO DE TARJETA DEL HISTORIAL --- */
+  .tarjeta-venta {
+    background: #f8fafc;
+    border: 2px solid #e2e8f0;
+    border-radius: 16px;
+    padding: 14px;
+    cursor: pointer;
+    transition: all 0.2s ease;
+    text-align: left; /* Alineación natural de lectura */
+  }
+
+  .tarjeta-header {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    border-bottom: 1px solid #e2e8f0;
+    padding-bottom: 8px;
+    margin-bottom: 8px;
+  }
+
+  .tarjeta-id {
+    font-weight: bold;
+    color: #475569;
+  }
+
+  .tarjeta-total {
+    font-weight: 800;
+    color: #27ae60;
+    font-size: 15px;
+  }
+
+  .tarjeta-body p {
+    margin: 4px 0;
+    font-size: 13px;
+    color: #334155;
+  }
+
+  /* Estado cuando tocas una tarjeta para seleccionarla */
+  .tarjeta-seleccionada {
+    background: #ebf5fb;
+    border-color: #3498db;
+    box-shadow: 0 4px 12px rgba(52, 152, 219, 0.15);
+  }
+
+  /* --- DISEÑO DE TARJETA DE LOS DETALLES --- */
+  .tarjeta-articulo {
+    background: #fff;
+    border: 1.5px solid #f97316; /* Mantiene el color naranja de tu temática */
+    border-radius: 16px;
+    padding: 12px;
+    text-align: left;
+  }
+
+  .tarjeta-header-articulo {
+    color: #f97316;
+    font-size: 14px;
+    font-weight: bold;
+    margin-bottom: 6px;
+    border-bottom: 1px dashed #fed7aa;
+    padding-bottom: 4px;
+  }
+
+  .tarjeta-body-articulo p {
+    display: flex;
+    justify-content: space-between; /* Pone el texto a la izquierda y el valor a la derecha */
+    margin: 4px 0;
+    font-size: 13px;
+  }
+
+  .tarjeta-body-articulo span {
+    color: #64748b;
+  }
+
+  .tarjeta-subtotal {
+    font-weight: bold;
+    border-top: 1px solid #f1f5f9;
+    padding-top: 4px;
+    margin-top: 6px !important;
+  }
+
+  .no-data, .no-data-select, .no-data-error {
+    text-align: center;
+    padding: 20px;
+    color: #64748b;
+    font-size: 13px;
+    background: #f8fafc;
+    border-radius: 12px;
+  }
+}
+
+/* ==========================================
+   CELULARES PEQUEÑOS (max-width: 480px) - REEMPLAZADO
+========================================== */
+@media (max-width: 480px) {
+  .ventas-content {
+    padding: 8px;
+  }
+
+  .ventas-sidebar {
+    padding: 12px;
+  }
+
+  .ventas-sidebar button {
+    padding: 12px;
+    font-size: 14px;
+  }
+
+  .filter-group input {
+    padding: 10px;
+    font-size: 14px;
+  }
+
+  .table-wrapper {
+    padding: 8px;
+  }
+
+  .btn-cerrar {
+    width: 100%;
+  }
+}

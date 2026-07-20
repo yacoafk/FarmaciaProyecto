@@ -1,0 +1,114 @@
+.admin-header {
+  /* Usamos variables de NovaTech */
+  background: linear-gradient(135deg, var(--primary-orange), var(--secondary-orange));
+  display: flex;
+  justify-content: space-between; 
+  align-items: center;
+  padding: 15px 5%; /* El 5% crea un margen dinámico a los lados */
+  width: 100%;
+  box-sizing: border-box; /* Evita que el padding ensanche el header */
+  box-shadow: 0 4px 12px rgba(0,0,0,0.1);
+}
+
+.header-brand {
+  display: flex;
+  align-items: center;
+  gap: 15px; /* Espacio entre corazón, nombre y reloj */
+  color: white !important;
+}
+
+.brand-title {
+  font-size: 1.5rem;
+  font-weight: 800;
+  letter-spacing: -0.5px;
+  color: white !important;
+}
+
+.admin-clock {
+  background: rgba(255, 255, 255, 0.2);
+  padding: 4px 12px;
+  border-radius: 10px;
+  font-size: 0.9rem;
+  font-weight: 600;
+  margin-left: 10px;
+  border: 1px solid rgba(255, 255, 255, 0.3);
+}
+
+.header-actions {
+  display: flex;
+  align-items: center;
+}
+
+.btn-logout {
+  background: white;
+  color: var(--secondary-orange);
+  border: none;
+  padding: 10px 20px;
+  border-radius: 12px;
+  font-weight: 700;
+  cursor: pointer;
+  transition: all 0.3s ease;
+  
+  /* Evita que el botón se corte o se achique */
+  white-space: nowrap; 
+  display: flex;
+  align-items: center;
+  gap: 8px;
+}
+
+.btn-logout:hover {
+  transform: translateY(-2px);
+  box-shadow: 0 4px 10px rgba(0,0,0,0.15);
+  filter: brightness(1.05);
+}
+
+
+/* ===================================================
+   VISTA RESPONSIVA (MÓVIL Y TABLETS)
+=================================================== */
+
+@media (max-width: 768px) {
+  .admin-header {
+    padding: 12px 20px; /* Reducimos un poco el alto general */
+    flex-direction: row !important; /* Mantenemos todo en una sola línea horizontal */
+    justify-content: space-between;
+    align-items: center;
+  }
+
+  .brand-title {
+    font-size: 1.2rem;
+  }
+
+  /* Ocultamos por completo el reloj en dispositivos móviles */
+  .hide-on-mobile {
+    display: none !important;
+  }
+
+  .header-actions {
+    width: auto; /* Evita que ocupe todo el ancho */
+  }
+
+  .btn-logout {
+    padding: 10px; /* Lo volvemos un botón más cuadrado/circular */
+    border-radius: 50%; /* Si quieres que sea redondo, o usa 10px para mantenerlo semi-cuadrado */
+    justify-content: center;
+    min-width: 40px;
+    min-height: 40px;
+  }
+
+  /* Ocultamos únicamente el texto "Salir", dejando solo el icono LogOut */
+  .logout-text {
+    display: none !important;
+  }
+}
+
+/* Ajustes finos para celulares muy pequeños */
+@media (max-width: 480px) {
+  .admin-header {
+    padding: 10px 15px;
+  }
+  
+  .brand-title {
+    font-size: 1.1rem;
+  }
+}

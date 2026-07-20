@@ -1,0 +1,138 @@
+/* Fondos y contenedores principales del Modal */
+.modal-overlay {
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100vw;
+    height: 100vh;
+    background: rgba(0, 0, 0, 0.5);
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    z-index: 1000;
+}
+
+.modal-content {
+    background: #ffffff;
+    padding: 25px;
+    border-radius: 8px;
+    width: 700px;
+    max-width: 90%;
+    box-shadow: 0 4px 15px rgba(0,0,0,0.2);
+    position: relative;
+}
+
+/* Buscador interactivo */
+.modal-buscador-container {
+    position: relative;
+    margin-bottom: 20px;
+}
+
+.modal-input-buscar {
+    width: 100%;
+    padding: 10px;
+    margin-top: 5px;
+    border: 1px solid #ccc;
+    border-radius: 4px;
+    box-sizing: border-box;
+}
+
+.modal-resultados-busqueda {
+    position: absolute;
+    top: 100%;
+    left: 0;
+    width: 100%;
+    background: white;
+    border: 1px solid #ddd;
+    border-top: none;
+    list-style: none;
+    margin: 0;
+    padding: 0;
+    max-height: 150px;
+    overflow-y: auto;
+    z-index: 1010;
+    box-shadow: 0 4px 6px rgba(0,0,0,0.1);
+}
+
+.modal-resultados-busqueda li {
+    padding: 10px;
+    cursor: pointer;
+    border-bottom: 1px solid #f0f0f0;
+}
+
+.modal-resultados-busqueda li:hover {
+    background: #f1f2f6;
+    color: #2980b9;
+}
+
+/* Área de tabla interna */
+.modal-table-wrapper {
+    max-height: 200px;
+    overflow-y: auto;
+    border: 1px solid #e0e0e0;
+    margin-bottom: 15px;
+}
+
+.modal-tabla {
+    width: 100%;
+    border-collapse: collapse;
+}
+
+.modal-tabla th, .modal-tabla td {
+    padding: 10px;
+    text-align: left;
+    border-bottom: 1px solid #eee;
+}
+
+.modal-tabla th {
+    background-color: #ff7402;
+}
+
+/* Sección de totales y botones */
+.modal-totales-seccion {
+    display: flex;
+    justify-content: flex-end;
+    margin: 15px 0;
+    font-size: 1.1rem;
+}
+
+.total-precio {
+    color: #e74c3c;
+    margin-left: 10px;
+    font-size: 1.3rem;
+}
+
+.modal-acciones {
+    display: flex;
+    justify-content: flex-end;
+    gap: 10px;
+}
+
+.btn-modal-cancelar {
+    background: #95a5a6;
+    color: white;
+    border: none;
+    padding: 10px 20px;
+    border-radius: 4px;
+    cursor: pointer;
+}
+
+.btn-modal-registrar {
+    background: #27ae60;
+    color: white;
+    border: none;
+    padding: 10px 20px;
+    border-radius: 4px;
+    cursor: pointer;
+}
+
+.btn-modal-registrar:disabled {
+    background: #c8d6e5;
+    cursor: not-allowed;
+}
+
+.btn-eliminar-item {
+    background: transparent;
+    border: none;
+    cursor: pointer;
+}

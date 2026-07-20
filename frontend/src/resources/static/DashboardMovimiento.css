@@ -1,0 +1,728 @@
+/* Contenedor Principal */
+.ventas-container {
+    height: 100vh;
+    background-color: #fcf6f4; /* Un tono crema/rojizo extremadamente sutil y limpio */
+    display: flex;
+    flex-direction: column;
+    font-family: 'Inter', 'Segoe UI', system-ui, sans-serif; 
+    overflow: hidden;
+    color: #2c3e50;
+}
+
+/* AREA DE CONTENIDO (SIDEBAR Y TABLAS) */
+.ventas-content, .compras-content {
+    display: flex; 
+    gap: 24px;
+    padding: 24px;
+    flex: 1;
+    min-height: 0; /* CRÍTICAL: Permite que los hijos respeten el alto del padre sin desbordar */
+}
+
+/* BARRA LATERAL IZQUIERDA */
+.ventas-sidebar, .compras-sidebar {
+    width: 280px; 
+    display: flex;
+    flex-direction: column;
+    gap: 16px;
+    padding: 24px;
+    background: white;
+    border-radius: 20px;
+    box-shadow: 0 4px 20px rgba(165, 92, 72, 0.05);
+    box-sizing: border-box;
+    flex-shrink: 0; /* Evita que el sidebar se deforme o se achique */
+}
+
+/* BOTONES DEL SIDEBAR */
+.ventas-sidebar button, .compras-sidebar button {
+    padding: 14px;
+    border-radius: 12px;
+    border: none;
+    cursor: pointer;
+    font-weight: 600;
+    font-size: 0.95rem;
+    transition: all 0.2s ease-in-out;
+}
+
+.ventas-sidebar button:hover, .compras-sidebar button:hover {
+    transform: translateY(-1px);
+    box-shadow: 0 4px 12px rgba(0,0,0,0.1);
+}
+
+.btn-anular { background: #ea580c; color: white; }
+.btn-anular:hover { background: #c2410c; }
+
+.btn-actualizar { background: #0f766e; color: white; }
+.btn-actualizar:hover { background: #115e59; }
+
+.btn-buscar { 
+    background: white; 
+    color: #166534; 
+    border: 2px solid #166534 !important; 
+}
+.btn-buscar:hover { background: #f0fdf4; }
+
+.btn-cerrar { 
+    background: white; 
+    color: #dc2626; 
+    border: 2px solid #dc2626 !important; 
+    margin-top: auto; 
+}
+.btn-cerrar:hover { background: #fef2f2; }
+
+/* FILTROS */
+.filter-group {
+    display: flex;
+    flex-direction: column;
+    gap: 8px;
+    margin: 8px 0;
+}
+
+.filter-group label {
+    font-size: 0.85rem;
+    font-weight: 600;
+    color: #64748b;
+    text-transform: uppercase;
+    letter-spacing: 0.5px;
+}
+
+.filter-group input {
+    padding: 10px 12px;
+    border-radius: 8px;
+    border: 1px solid #cbd5e1;
+    background: #f8fafc;
+    color: #334155;
+    font-family: inherit;
+    transition: border-color 0.2s;
+}
+
+.filter-group input:focus {
+    outline: none;
+    border-color: #f97316;
+    background: white;
+}
+
+/* AREA PRINCIPAL DE TABLAS */
+.ventas-main, .compras-main {
+    flex: 1; 
+    display: flex;
+    flex-direction: column;
+    gap: 24px;
+    min-width: 0;
+    height: 100%; /* Forzar a ocupar el alto del contenedor */
+}
+
+/* CONTENEDOR DE CADA TABLA (WRAPPERS) */
+.table-wrapper {
+    background: white;
+    border-radius: 20px;
+    padding: 24px;
+    box-shadow: 0 4px 20px rgba(165, 92, 72, 0.05);
+    flex: 1; 
+    width: 100%; 
+    box-sizing: border-box; 
+    overflow-y: auto; /* Activa scroll vertical si el contenido supera el espacio */
+    min-height: 0; /* Clave para que flexbox controle el desborde */
+    display: flex;
+    flex-direction: column;
+}
+
+.table-wrapper h3 {
+    margin-top: 0;
+    margin-bottom: 16px;
+    font-size: 1.15rem;
+    color: #1e293b;
+    font-weight: 700;
+    letter-spacing: -0.3px;
+}
+
+/* DISEÑO DE TABLAS PROFESIONALES */
+table, .modal-tabla {
+    width: 100%; 
+    border-collapse: separate;
+    border-spacing: 0;
+}
+
+/* Encabezados Fijos */
+thead th {
+    background: #f8fafc; 
+    color: #475569; 
+    padding: 14px 16px;
+    font-weight: 600;
+    font-size: 0.85rem;
+    text-transform: uppercase;
+    letter-spacing: 0.5px;
+    text-align: left; 
+    position: sticky;
+    top: 0;
+    z-index: 10; /* Evita que los td se superpongan al hacer scroll */
+    border-bottom: 2px solid #e2e8f0;
+}
+
+thead th, tbody td {
+    text-align: left;
+    padding: 14px 16px;
+    font-size: 0.95rem;
+}
+
+thead th:last-child, tbody td:last-child {
+    text-align: right; 
+}
+
+/* Filas del cuerpo */
+tbody tr {
+    transition: background-color 0.15s ease;
+}
+
+tbody tr:not(.fila-seleccionada):hover {
+    background-color: #f8fafc !important; 
+}
+
+tbody td {
+    border-bottom: 1px solid #f1f5f9; 
+    background: transparent; 
+    color: #334155;
+}
+
+/* Fila Seleccionada (Estado Activo) */
+.fila-seleccionada td {
+    background-color: #fff7ed !important; 
+    color: #ea580c !important;
+    border-bottom: 1px solid #fed7aa;
+}
+
+thead th:first-child { border-top-left-radius: 8px; }
+thead th:last-child { border-top-right-radius: 8px; }
+
+
+/* ================= MODAL DE REGISTRO ================= */
+.modal-overlay {
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background: rgba(15, 23, 42, 0.6); 
+    backdrop-filter: blur(4px);
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    z-index: 100;
+}
+
+.modal-content {
+    background: white;
+    width: 750px;
+    max-width: 90%;
+    height: 85vh; /* Alto fijo para controlar el espacio interno */
+    max-height: 85vh;
+    border-radius: 20px;
+    padding: 28px;
+    box-shadow: 0 25px 50px -12px rgba(0, 0, 0, 0.25);
+    display: flex;
+    flex-direction: column;
+    gap: 20px;
+}
+
+.modal-content h2 {
+    margin: 0;
+    font-size: 1.4rem;
+    color: #0f172a;
+}
+
+.modal-content hr {
+    border: 0;
+    border-top: 1px solid #e2e8f0;
+    margin: 0;
+}
+
+/* Buscador dentro del Modal */
+.modal-buscador-container {
+    position: relative;
+    display: flex;
+    flex-direction: column;
+    gap: 8px;
+}
+
+.modal-buscador-container label {
+    font-size: 0.9rem;
+    font-weight: 600;
+    color: #475569;
+}
+
+.modal-input-buscar {
+    padding: 12px 14px;
+    border: 1px solid #cbd5e1;
+    border-radius: 10px;
+    font-size: 0.95rem;
+    outline: none;
+}
+
+/* Desplegable de resultados de búsqueda en el modal */
+.modal-resultados-busqueda {
+    position: absolute;
+    top: 100%;
+    left: 0;
+    right: 0;
+    background: white;
+    border: 1px solid #cbd5e1;
+    border-radius: 10px;
+    max-height: 200px;
+    overflow-y: auto;
+    z-index: 110;
+    margin-top: 5px;
+    padding: 0;
+    list-style: none;
+    box-shadow: 0 10px 15px -3px rgba(0, 0, 0, 0.1);
+}
+
+.modal-resultados-busqueda li {
+    padding: 10px 14px;
+    cursor: pointer;
+    font-size: 0.9rem;
+    transition: background 0.2s;
+}
+
+.modal-resultados-busqueda li:hover {
+    background: #f1f5f9;
+}
+
+/* Wrapper específico para la tabla interna del Modal */
+.modal-table-wrapper {
+    flex: 1; /* Absorbe el espacio restante del modal */
+    overflow-y: auto; /* Scroll exclusivo para los productos del carrito */
+    border: 1px solid #e2e8f0;
+    border-radius: 12px;
+    min-height: 0;
+}
+
+.modal-totales-seccion {
+    padding: 10px 0;
+}
+
+.total-row {
+    display: flex;
+    justify-content: space-between;
+    font-size: 1.1rem;
+    font-weight: bold;
+}
+
+.modal-acciones {
+    display: flex;
+    justify-content: flex-end;
+    gap: 12px;
+    margin-top: 8px;
+}
+
+.btn-modal-cancelar {
+    background: #f1f5f9;
+    color: #475569;
+    border: none;
+    padding: 12px 20px;
+    border-radius: 10px;
+    font-weight: 600;
+    cursor: pointer;
+    transition: background 0.15s;
+}
+
+.btn-modal-cancelar:hover {
+    background: #e2e8f0;
+}
+
+.btn-modal-registrar {
+    background: #ea580c;
+    color: white;
+    border: none;
+    padding: 12px 24px;
+    border-radius: 10px;
+    font-weight: 600;
+    cursor: pointer;
+    transition: background 0.15s;
+}
+
+.btn-modal-registrar:hover:not(:disabled) {
+    background: #c2410c;
+}
+
+.btn-modal-registrar:disabled {
+    background: #cbd5e1;
+    color: #94a3b8;
+    cursor: not-allowed;
+}
+
+/* Personalización del scrollbar interno para navegadores modernos */
+::-webkit-scrollbar {
+    width: 6px;
+    height: 6px;
+}
+::-webkit-scrollbar-track {
+    background: transparent;
+}
+::-webkit-scrollbar-thumb {
+    background: #cbd5e1;
+    border-radius: 4px;
+}
+::-webkit-scrollbar-thumb:hover {
+    background: #94a3b8;
+}
+
+
+
+/* COMPRASSSS */
+
+/* Contenedor Principal */
+.compras-container {
+    height: 100vh;
+    background-color: #f4f7f6; /* Fondo gris/clínico limpio con un sutil toque verdoso */
+    display: flex;
+    flex-direction: column;
+    font-family: 'Inter', 'Segoe UI', system-ui, sans-serif; 
+    overflow: hidden;
+    color: #2c3e50;
+}
+
+/* AREA DE CONTENIDO (SIDEBAR Y TABLAS) */
+.compras-content {
+    display: flex; 
+    gap: 24px;
+    padding: 24px;
+    flex: 1;
+    min-height: 0;
+}
+
+/* BARRA LATERAL IZQUIERDA */
+.compras-sidebar {
+    width: 280px; 
+    display: flex;
+    flex-direction: column;
+    gap: 16px;
+    padding: 24px;
+    background: white;
+    border-radius: 20px;
+    box-shadow: 0 4px 20px rgba(15, 118, 110, 0.03); /* Sombra muy sutil */
+    box-sizing: border-box;
+}
+
+/* BOTONES DEL SIDEBAR */
+.compras-sidebar button {
+    padding: 14px;
+    border-radius: 12px;
+    border: none;
+    cursor: pointer;
+    font-weight: 600;
+    font-size: 0.95rem;
+    transition: all 0.2s ease-in-out;
+}
+
+.compras-sidebar button:hover {
+    transform: translateY(-1px);
+    box-shadow: 0 4px 12px rgba(0,0,0,0.08);
+}
+
+.compras-sidebar button:active {
+    transform: translateY(0);
+}
+
+.btn-anular { background: #ea580c; color: white; }
+.btn-anular:hover { background: #c2410c; }
+
+.btn-actualizar { background: #0f766e; color: white; }
+.btn-actualizar:hover { background: #115e59; }
+
+.btn-buscar { 
+    background: white; 
+    color: #166534; 
+    border: 2px solid #166534 !important; 
+}
+.btn-buscar:hover { background: #f0fdf4; }
+
+.btn-cerrar { 
+    background: white; 
+    color: #dc2626; 
+    border: 2px solid #dc2626 !important; 
+    margin-top: auto; 
+}
+.btn-cerrar:hover { background: #fef2f2; }
+
+/* FILTROS */
+.filter-group {
+    display: flex;
+    flex-direction: column;
+    gap: 8px;
+    margin: 8px 0;
+}
+
+.filter-group label {
+    font-size: 0.85rem;
+    font-weight: 600;
+    color: #64748b;
+    text-transform: uppercase;
+    letter-spacing: 0.5px;
+}
+
+.filter-group input {
+    padding: 10px 12px;
+    border-radius: 8px;
+    border: 1px solid #cbd5e1;
+    background: #f8fafc;
+    color: #334155;
+    font-family: inherit;
+    transition: border-color 0.2s;
+}
+
+.filter-group input:focus {
+    outline: none;
+    border-color: #0f766e; /* Focus color esmeralda acorde a compras */
+    background: white;
+}
+
+/* AREA PRINCIPAL DE TABLAS */
+.compras-main {
+    flex: 1; 
+    display: flex;
+    flex-direction: column;
+    gap: 24px;
+    width: 100%;
+}
+
+/* CONTENEDOR DE LAS TABLAS (WRAPPERS) */
+.table-wrapper {
+    background: white;
+    border-radius: 20px;
+    padding: 24px;
+    box-shadow: 0 4px 20px rgba(15, 118, 110, 0.03);
+    flex: 1; 
+    width: 100%; 
+    box-sizing: border-box; 
+    overflow-y: auto;
+    min-height: 0;
+}
+
+/* DISEÑO DE TABLAS PROFESIONALES */
+table {
+    width: 100%; 
+    border-collapse: separate;
+    border-spacing: 0;
+}
+
+/* Encabezados de la Tabla */
+thead th {
+    background: #f8fafc; /* Gris limpio corporativo */
+    color: #475569;
+    padding: 14px 16px;
+    font-weight: 600;
+    font-size: 0.85rem;
+    text-transform: uppercase;
+    letter-spacing: 0.5px;
+    text-align: left;
+    position: sticky;
+    top: 0;
+    z-index: 10;
+    border-bottom: 2px solid #e2e8f0;
+}
+
+/* Alineaciones por celda */
+thead th, tbody td {
+    text-align: left;
+    padding: 14px 16px;
+    font-size: 0.95rem;
+}
+
+/* Formateo contable: Alineación a la derecha para columnas de dinero (Total y Sub Total) */
+thead th:last-child, tbody td:last-child {
+    text-align: right;
+}
+
+/* Filas del cuerpo */
+tbody tr {
+    transition: background-color 0.15s ease;
+}
+
+tbody tr:not(.fila-seleccionada):hover {
+    background-color: #f8fafc !important; /* Hover sutil */
+}
+
+tbody td {
+    border-bottom: 1px solid #f1f5f9;
+    background: transparent; 
+    color: #334155;
+}
+
+/* Fila Seleccionada (Cuando el usuario hace clic en una compra) */
+.fila-seleccionada td {
+    background-color: #f0fdf4 !important; /* Tono verde menta premium */
+    color: #115e59 !important; /* Texto verde oscuro esmeralda */
+    border-bottom: 1px solid #bbf7d0;
+}
+
+/* Bordes superiores sutiles para la cabecera */
+thead th:first-child { border-top-left-radius: 8px; }
+thead th:last-child { border-top-right-radius: 8px; }
+
+/* Personalización del scrollbar interno */
+.table-wrapper::-webkit-scrollbar {
+    width: 6px;
+    height: 6px;
+}
+.table-wrapper::-webkit-scrollbar-track {
+    background: transparent;
+}
+.table-wrapper::-webkit-scrollbar-thumb {
+    background: #cbd5e1;
+    border-radius: 4px;
+}
+.table-wrapper::-webkit-scrollbar-thumb:hover {
+    background: #94a3b8;
+}
+/* ===================================
+   TABLET
+=================================== */
+@media (max-width: 1024px) {
+
+    .ventas-content,
+    .compras-content {
+        flex-direction: column;
+        padding: 16px;
+    }
+
+    .ventas-sidebar,
+    .compras-sidebar {
+        width: 100%;
+    }
+
+    .ventas-main,
+    .compras-main {
+        width: 100%;
+    }
+
+    .table-wrapper {
+        overflow-x: auto;
+    }
+
+    table,
+    .modal-tabla {
+        min-width: 900px;
+    }
+
+    .modal-content {
+        width: 95%;
+        height: 90vh;
+    }
+}
+
+
+/* ===================================
+   MOVIL
+=================================== */
+@media (max-width: 768px) {
+
+    .ventas-container,
+    .compras-container {
+        height: auto;
+        overflow: visible;
+    }
+
+    .ventas-content,
+    .compras-content {
+        flex-direction: column;
+        gap: 16px;
+        padding: 12px;
+    }
+
+    .ventas-sidebar,
+    .compras-sidebar {
+        width: 100%;
+        padding: 16px;
+    }
+
+    .ventas-sidebar button,
+    .compras-sidebar button {
+        width: 100%;
+        padding: 12px;
+        font-size: 14px;
+    }
+
+    .table-wrapper {
+        padding: 12px;
+        overflow-x: auto;
+    }
+
+    table,
+    .modal-tabla {
+        min-width: 800px;
+    }
+
+    thead th,
+    tbody td {
+        padding: 10px;
+        font-size: 13px;
+    }
+
+    .modal-content {
+        width: 95%;
+        height: 95vh;
+        padding: 16px;
+        border-radius: 14px;
+    }
+
+    .modal-acciones {
+        flex-direction: column;
+    }
+
+    .btn-modal-cancelar,
+    .btn-modal-registrar {
+        width: 100%;
+    }
+
+    .total-row {
+        font-size: 1rem;
+    }
+}
+
+
+/* ===================================
+   CELULARES PEQUEÑOS
+=================================== */
+@media (max-width: 480px) {
+
+    .ventas-content,
+    .compras-content {
+        padding: 8px;
+    }
+
+    .ventas-sidebar,
+    .compras-sidebar {
+        padding: 12px;
+    }
+
+    .filter-group label {
+        font-size: 12px;
+    }
+
+    .filter-group input {
+        font-size: 13px;
+        padding: 8px 10px;
+    }
+
+    .table-wrapper {
+        padding: 8px;
+    }
+
+    table,
+    .modal-tabla {
+        min-width: 700px;
+    }
+
+    thead th,
+    tbody td {
+        font-size: 12px;
+        padding: 8px;
+    }
+
+    .modal-content h2 {
+        font-size: 1.1rem;
+    }
+
+    .modal-content {
+        padding: 12px;
+    }
+}

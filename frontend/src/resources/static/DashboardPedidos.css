@@ -1,0 +1,359 @@
+/* Layout Base General */
+.pedidos-container {
+    display: flex;
+    flex-direction: column;
+    min-height: 100vh;
+    font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+    background-color: #f4f6f9;
+}
+
+.pedidos-content {
+    display: flex;
+    flex: 1;
+}
+
+/* Sidebar Estilizado */
+.pedidos-sidebar {
+    width: 260px;
+    background-color: #ffffff;
+    padding: 24px 18px;
+    display: flex;
+    flex-direction: column;
+    gap: 14px;
+    border-right: 1px solid #e2e8f0;
+    box-shadow: 2px 0 5px rgba(0,0,0,0.02);
+}
+
+.pedidos-main {
+    flex: 1;
+    padding: 25px;
+    background-color: #f8fafc;
+}
+
+/* Cajas de Control internas del Sidebar */
+.control-box {
+    display: flex;
+    flex-direction: column;
+    gap: 6px;
+}
+
+.label-title {
+    font-size: 12px; 
+    fontWeight: bold; 
+    color: #64748b;
+    text-transform: uppercase;
+    letter-spacing: 0.5px;
+}
+
+.select-estado {
+    padding: 11px;
+    border-radius: 8px;
+    border: 1px solid #cbd5e1;
+    font-size: 14px;
+    font-weight: 600;
+    color: white;
+    outline: none;
+    cursor: pointer;
+    transition: all 0.3s ease;
+}
+
+.filter-group {
+    display: flex;
+    flex-direction: column;
+    gap: 6px;
+    border-top: 1px solid #f1f5f9;
+    padding-top: 12px;
+}
+
+.filter-group label {
+    font-size: 12px;
+    font-weight: 600;
+    color: #64748b;
+}
+
+.filter-group input[type="date"] {
+    padding: 8px 10px;
+    border-radius: 6px;
+    border: 1px solid #cbd5e1;
+    font-size: 13px;
+    outline: none;
+}
+
+/* Botonera Global del Sidebar */
+.pedidos-sidebar button {
+    padding: 12px;
+    border: none;
+    border-radius: 8px;
+    cursor: pointer;
+    font-weight: bold;
+    font-size: 14px;
+    transition: transform 0.1s ease, background-color 0.2s ease;
+}
+
+.pedidos-sidebar button:active {
+    transform: scale(0.98);
+}
+
+.btn-anular { color: white; margin-bottom: 5px; }
+.btn-buscar { background-color: #1e293b; color: white; }
+.btn-limpiar { background-color: #ffffff; border: 1px solid #cbd5e1 !important; color: #334155; }
+.btn-excel { background-color: #27ae60; color: white; }
+.btn-pdf { background-color: #e67e22; color: white; }
+.btn-cerrar { background-color: #64748b; color: white; margin-top: auto; }
+
+/* Estilos de Tablas Limpias */
+.table-wrapper {
+    background: #ffffff;
+    padding: 20px;
+    border-radius: 12px;
+    box-shadow: 0 4px 6px -1px rgba(0,0,0,0.05);
+    margin-bottom: 25px;
+}
+
+.table-wrapper h3 {
+    margin-top: 0;
+    margin-bottom: 16px;
+    color: #1e293b;
+    font-size: 16px;
+    border-left: 4px solid #ff7300;
+    padding-left: 8px;
+}
+
+.table-wrapper table {
+    width: 100%;
+    border-collapse: collapse;
+}
+
+.table-wrapper th {
+    background-color: #ff7300;
+    color: white;
+    padding: 14px 12px;
+    text-transform: uppercase;
+    font-size: 12px;
+    letter-spacing: 0.5px;
+}
+
+.table-wrapper td {
+    padding: 14px 12px;
+    text-align: center;
+    border-bottom: 1px solid #f1f5f9;
+    color: #334155;
+    font-size: 14px;
+}
+
+.table-wrapper tbody tr {
+    transition: background-color 0.2s ease;
+}
+
+.table-wrapper tbody tr:hover {
+    background-color: #f8fafc;
+}
+
+/* Fila Seleccionada en Escritorio */
+.fila-seleccionada {
+    background-color: #ffebd9 !important;
+    font-weight: 600;
+}
+
+.total-text {
+    color: #16a34a !important;
+    font-weight: bold;
+}
+
+/* Badges de Estado */
+.badge-status {
+    padding: 4px 12px;
+    border-radius: 20px;
+    font-size: 12px;
+    font-weight: 600;
+    display: inline-block;
+    text-transform: uppercase;
+}
+
+.entregado { background-color: #dcfce7; color: #15803d; }
+.en-proceso { background-color: #fef9c3; color: #a16207; }
+.pendiente { background-color: #fee2e2; color: #b91c1c; }
+.cancelado { background-color: #f1f5f9; color: #64748b; }
+
+/* Controladores de visibilidad Condicional */
+.desktop-only { display: block; }
+.mobile-only { display: none; }
+
+
+/* ==========================================
+   RESPONSIVE: DISPOSITIVOS MEDIANOS Y TABLETS
+========================================== */
+@media (max-width: 1024px) {
+    .pedidos-content {
+        flex-direction: column;
+    }
+
+    .pedidos-sidebar {
+        width: 100%;
+        border-right: none;
+        border-bottom: 1px solid #e2e8f0;
+        box-sizing: border-box;
+    }
+
+    .pedidos-sidebar button {
+        margin-top: 0 !important;
+    }
+    
+    .btn-cerrar {
+        margin-top: 10px !important;
+    }
+}
+
+
+/* ==========================================
+   RESPONSIVE: MÓVILES (CAMBIO COMPLETO - CORREGIDO)
+========================================== */
+@media (max-width: 768px) {
+    .desktop-only { display: none !important; }
+    .mobile-only { display: block !important; }
+
+    .pedidos-main {
+        padding: 14px;
+    }
+
+    /* --- SOLUCIÓN DEL DESPLEGABLE FLOTANTE ---
+       Fuerza al select a no estirarse fuera de la pantalla */
+    .select-estado {
+        width: 100% !important;
+        max-width: 100% !important;
+        box-sizing: border-box;
+    }
+
+    /* Contenedor e Historial en Tarjetas */
+    .mobile-cards-container h3 {
+        color: #1e293b;
+        font-size: 16px;
+        margin-bottom: 12px;
+        border-left: 4px solid #ff7300;
+        padding-left: 8px;
+    }
+
+    .pedido-card-item {
+        background: #ffffff;
+        border: 1px solid #e2e8f0;
+        border-radius: 12px;
+        padding: 14px;
+        margin-bottom: 12px;
+        box-shadow: 0 2px 4px rgba(0,0,0,0.02);
+        cursor: pointer;
+        transition: all 0.2s ease;
+    }
+
+    .pedido-card-item.selected {
+        border-color: #ff7300;
+        background-color: #fffaf5;
+        box-shadow: 0 4px 10px rgba(255,115,0,0.1);
+    }
+
+    .card-header-row {
+        display: flex;
+        justify-content: space-between;
+        align-items: center;
+        border-bottom: 1px dashed #e2e8f0;
+        padding-bottom: 8px;
+        margin-bottom: 10px;
+    }
+
+    .card-id {
+        font-weight: bold;
+        color: #1e293b;
+        font-size: 15px;
+    }
+
+    .card-body-row p {
+        margin: 4px 0;
+        font-size: 13px;
+        color: #475569;
+    }
+
+    .card-total-box {
+        display: flex;
+        justify-content: space-between;
+        margin-top: 8px;
+        font-weight: bold;
+        background: #f8fafc;
+        padding: 6px 10px;
+        border-radius: 6px;
+    }
+
+    .card-total-val {
+        color: #16a34a;
+    }
+
+    .card-selection-indicator {
+        font-size: 11px;
+        text-align: center;
+        color: #94a3b8;
+        margin-top: 8px;
+        background-color: #f1f5f9;
+        padding: 3px;
+        border-radius: 4px;
+    }
+    
+    .pedido-card-item.selected .card-selection-indicator {
+        background-color: #ff7300;
+        color: white;
+        font-weight: bold;
+    }
+
+    /* Transformación de la tabla de detalles a formato lista responsive */
+    .products-details-section table, 
+    .products-details-section thead, 
+    .products-details-section tbody, 
+    .products-details-section th, 
+    .products-details-section td, 
+    .products-details-section tr { 
+        display: block; 
+    }
+    
+    .products-details-section thead tr { 
+        position: absolute;
+        top: -9999px;
+        left: -9999px;
+    }
+    
+    .products-details-section tr { 
+        border: 1px solid #e2e8f0; 
+        border-radius: 8px;
+        margin-bottom: 10px;
+        background-color: #ffffff;
+        padding: 6px;
+    }
+    
+    /* --- SOLUCIÓN DE LOS DATOS CORTADOS A LA DERECHA --- */
+    .products-details-section td { 
+        border: none;
+        border-bottom: 1px solid #f1f5f9; 
+        position: relative;
+        padding-left: 42% !important; /* Reducido para dar más espacio horizontal */
+        text-align: left !important;   /* Alineado a la izquierda para un flujo continuo */
+        font-size: 13px;
+        min-height: 38px;
+        display: flex;
+        align-items: center;
+        box-sizing: border-box;
+    }
+
+    .products-details-section td:last-child {
+        border-bottom: none;
+    }
+    
+    .products-details-section td:before { 
+        position: absolute;
+        top: 50%;
+        transform: translateY(-50%); /* Centrado vertical exacto de la etiqueta */
+        left: 12px;
+        width: 38px; 
+        padding-right: 10px; 
+        white-space: nowrap;
+        text-align: left;
+        font-weight: bold;
+        color: #64748b;
+        content: attr(data-label);
+    }
+}

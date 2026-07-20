@@ -1,0 +1,266 @@
+:root {
+  --bg-admin: #f8fafc;
+  /* Un gris un poco más limpio y moderno */
+  --sidebar-dark: #1e293b;
+  --primary-orange: #ff8c00;
+  --text-main: #334155;
+}
+
+/* ESTRUCTURA PADRE DE LA PAGINA */
+.admin-layout {
+  display: flex;
+  min-height: 100vh;
+  background-color: var(--bg-admin);
+  width: 100%;
+}
+
+/* MAIN CONTENT CONTAINER */
+.admin-main-container {
+  flex: 1;
+  display: flex;
+  flex-direction: column;
+  min-width: 0;
+  /* Evita que el contenido desborde al padre flex */
+}
+
+/* CONTENEDOR INTERNO DEL DASHBOARD */
+.admin-content {
+  padding: 2.5rem;
+  display: flex;
+  flex-direction: column;
+  gap: 2rem;
+  width: 100%;
+  /* ¡CORREGIDO! Cambiado de 180% a 100% */
+  box-sizing: border-box;
+}
+
+/* SIDEBAR (Mantengo tu estructura pero asegurando el comportamiento flex) */
+.admin-sidebar {
+  width: 240px;
+  /* Un poquito más ancho le da más presencia */
+  background: #F76E14;
+  color: white;
+  display: flex;
+  flex-direction: column;
+  padding: 1.5rem;
+  position: sticky;
+  top: 0;
+  height: 100vh;
+  box-sizing: border-box;
+}
+
+/* ================= GRILLA DE KPIs ================= */
+.kpi-grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+  /* Hace las tarjetas elásticas y más anchas */
+  gap: 1.5rem;
+  width: 100%;
+}
+
+.kpi-card {
+  background: white;
+  /* Cambiado a blanco para mejor contraste con el fondo gris claro */
+  padding: 1.75rem 2rem;
+  /* Espaciado interno más balanceado */
+  border-radius: 16px;
+  display: flex;
+  align-items: center;
+  gap: 1.5rem;
+  box-shadow: 0 4px 6px -1px rgba(0, 0, 0, 0.02), 0 2px 4px -1px rgba(0, 0, 0, 0.02);
+  border: 1px solid #e2e8f0;
+}
+
+.kpi-data span {
+  font-size: 0.875rem;
+  color: #64748b;
+  font-weight: 500;
+}
+
+.kpi-data h3 {
+  font-size: 1.5rem;
+  color: #0f172a;
+  margin: 4px 0 0 0;
+  font-weight: 700;
+}
+
+/* KPIs */
+.kpi-grid {
+  display: grid;
+  grid-template-columns: repeat(3, 1fr);
+  gap: 1rem;
+  margin-bottom: 1rem;
+}
+
+.logout-btn {
+  background: rgba(255, 255, 255, 0);
+  color: red;
+  padding: 0.5rem 1rem;
+  border: red 3px solid;
+  border-radius: 8px;
+  font-family: 'Poppins', sans-serif;
+  font-size: 2rem;
+  cursor: pointer;
+}
+
+.kpi-card {
+  background: rgb(255, 245, 241);
+  padding: 2.5rem;
+  border-radius: 16px;
+  display: flex;
+  align-items: center;
+  gap: 1.5rem;
+  box-shadow: 0 6px 6px -1px rgba(0, 0, 0, 0.05);
+}
+
+.kpi-icon {
+  width: 48px;
+  height: 48px;
+  border-radius: 10px;
+  display: grid;
+  place-items: center;
+}
+
+.kpi-icon.blue {
+  background: #e0f2fe;
+  color: #0ea5e9;
+}
+
+.kpi-icon.orange {
+  background: #ffedd5;
+  color: #f97316;
+}
+
+.kpi-icon.green {
+  background: #dcfce7;
+  color: #22c55e;
+}
+
+/* MODULES */
+.module-grid {
+  display: grid;
+  grid-template-columns: repeat(3, 1fr);
+  gap: 1.5rem;
+}
+
+.module-card {
+  background: white;
+  border: 1px solid #e2e8f0;
+  padding: 1.5rem;
+  border-radius: 16px;
+  display: flex;
+  align-items: center;
+  gap: 1.5rem;
+  cursor: pointer;
+  transition: transform 0.2s, border-color 0.2s;
+  text-align: left;
+}
+
+.module-card:hover {
+  transform: translateY(-4px);
+  border-color: var(--primary-orange);
+  box-shadow: 0 10px 15px -3px rgba(0, 0, 0, 0.1);
+}
+
+.module-icon {
+  color: var(--primary-orange);
+}
+
+.module-info h3 {
+  font-size: 1.2rem;
+  color: #1e293b;
+  margin-bottom: 4px;
+}
+
+.module-info p {
+  font-size: 0.9rem;
+  color: #64748b;
+}
+
+.admin-special {
+  background: linear-gradient(to right, #ffffff, #fff7ed);
+  border: 1px dashed var(--primary-orange);
+}
+
+/* ===================================
+   TABLET
+=================================== */
+
+@media (max-width: 768px) {
+
+  .admin-content {
+    padding: 1.5rem;
+  }
+
+  .kpi-grid {
+    grid-template-columns: 1fr;
+  }
+
+  .module-grid {
+    grid-template-columns: repeat(2, 1fr);
+  }
+
+  .module-card {
+    padding: 1.2rem;
+    gap: 1rem;
+  }
+
+  .module-info h3 {
+    font-size: 1rem;
+  }
+
+  .module-info p {
+    font-size: 0.8rem;
+  }
+
+}
+
+/* ===================================
+   CELULAR
+=================================== */
+
+@media (max-width: 480px) {
+
+  .admin-content {
+    padding: 1rem;
+  }
+
+  .kpi-grid {
+    grid-template-columns: 1fr;
+    gap: 1rem;
+  }
+
+  .kpi-card {
+    padding: 1rem;
+    gap: 1rem;
+  }
+
+  .kpi-data h3 {
+    font-size: 1.1rem;
+  }
+
+  .module-grid {
+    grid-template-columns: 1fr;
+    gap: 1rem;
+  }
+
+  .module-card {
+    flex-direction: column;
+    text-align: center;
+    padding: 1rem;
+  }
+
+  .module-icon {
+    margin-bottom: 0.5rem;
+  }
+
+  .module-info h3 {
+    font-size: 1rem;
+    margin-bottom: 0.3rem;
+  }
+
+  .module-info p {
+    font-size: 0.8rem;
+  }
+
+}

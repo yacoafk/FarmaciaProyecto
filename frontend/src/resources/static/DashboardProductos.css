@@ -1,0 +1,808 @@
+.productos-container { height: 100vh; display: flex; flex-direction: column; background: #f8fafc; }
+
+.productos-full-content {
+  margin-top: 25px;
+}
+
+
+.table-toolbar {
+  display: flex;
+  justify-content: flex-end;
+  margin-bottom: 22px;
+}
+
+.btn-nuevo-header {
+  display: flex;
+  align-items: center;
+  gap: 8px;
+
+  border: none;
+  cursor: pointer;
+
+  background: linear-gradient(
+    135deg,
+    var(--primary-orange),
+    var(--secondary-orange)
+  );
+
+  color: white;
+  font-weight: 600;
+  font-size: 14px;
+
+  padding: 14px 22px;
+  border-radius: 14px;
+
+  box-shadow: var(--shadow-soft);
+
+  transition: all 0.25s ease;
+}
+
+.btn-nuevo-header:hover {
+  transform: translateY(-2px);
+  box-shadow: var(--shadow-hover);
+}
+
+/* =========================
+   TABLA
+========================= */
+
+.table-wrapper {
+  background: var(--white);
+  border-radius: 24px;
+  overflow: hidden;
+  box-shadow: var(--shadow-soft);
+  border: 1px solid var(--gray-border);
+}
+
+table {
+  width: 100%;
+  border-collapse: collapse;
+}
+
+thead {
+  background: linear-gradient(
+    135deg,
+    var(--primary-orange),
+    var(--secondary-orange)
+  );
+}
+
+thead th {
+  color: white;
+  padding: 18px;
+  font-size: 14px;
+  font-weight: 700;
+  text-transform: uppercase;
+  letter-spacing: 0.5px;
+}
+
+tbody tr {
+  transition: all 0.2s ease;
+}
+
+tbody tr:hover {
+  background-color: #fff7ed;
+}
+
+tbody td {
+  padding: 18px;
+  border-bottom: 1px solid #f1f1f1;
+  color: var(--text-dark);
+  font-size: 14px;
+}
+
+tbody tr:last-child td {
+  border-bottom: none;
+}
+
+/* =========================
+   TEXTOS
+========================= */
+
+.text-muted {
+  color: var(--text-soft);
+  font-weight: 500;
+}
+
+.text-bold {
+  font-weight: 700;
+  color: var(--text-dark);
+}
+
+.text-price {
+  font-weight: bold;
+  color: var(--success);
+  font-size: 15px;
+}
+
+.text-price-alt {
+  font-weight: 600;
+  color: var(--secondary-orange);
+}
+
+.low-stock {
+  color: var(--danger);
+  font-weight: bold;
+}
+
+/* =========================
+   TAG CATEGORÍA
+========================= */
+
+.cat-tag {
+  background: #fff7ed;
+  color: var(--secondary-orange);
+  border: 1px solid #fdba74;
+
+  padding: 7px 14px;
+  border-radius: 999px;
+
+  font-size: 13px;
+  font-weight: 600;
+
+  display: inline-flex;
+  align-items: center;
+  gap: 5px;
+}
+
+/* =========================
+   ACCIONES
+========================= */
+
+.actions-cell {
+  display: flex;
+  justify-content: center;
+  gap: 10px;
+}
+
+.btn-icon-edit,
+.btn-icon-delete {
+  width: 40px;
+  height: 40px;
+
+  border: none;
+  border-radius: 12px;
+
+  display: flex;
+  align-items: center;
+  justify-content: center;
+
+  cursor: pointer;
+  transition: all 0.2s ease;
+}
+
+.btn-icon-edit {
+  background: #fff7ed;
+  color: var(--primary-orange);
+}
+
+.btn-icon-edit:hover {
+  background: var(--primary-orange);
+  color: white;
+  transform: scale(1.05);
+}
+
+.btn-icon-delete {
+  background: #fef2f2;
+  color: var(--danger);
+}
+
+.btn-icon-delete:hover {
+  background: var(--danger);
+  color: white;
+  transform: scale(1.05);
+}
+
+/* =========================
+   MODAL
+========================= */
+
+.modal-overlay {
+  position: fixed;
+  inset: 0;
+
+  background: rgba(0,0,0,0.45);
+  backdrop-filter: blur(4px);
+
+  display: flex;
+  justify-content: center;
+  align-items: center;
+
+  z-index: 999;
+  padding: 20px;
+}
+
+.modal-box {
+  width: 100%;
+  max-width: 720px;
+
+  background: white;
+  border-radius: 28px;
+
+  overflow: hidden;
+
+  animation: modalShow 0.25s ease;
+  box-shadow: 0 20px 60px rgba(0,0,0,0.18);
+}
+
+@keyframes modalShow {
+  from {
+    opacity: 0;
+    transform: translateY(15px) scale(0.96);
+  }
+  to {
+    opacity: 1;
+    transform: translateY(0) scale(1);
+  }
+}
+
+/* =========================
+   MODAL HEADER
+========================= */
+
+.modal-header {
+  background: linear-gradient(
+    135deg,
+    var(--primary-orange),
+    var(--secondary-orange)
+  );
+
+  color: white;
+
+  padding: 22px 28px;
+
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+}
+
+.modal-header h3 {
+  font-size: 22px;
+  font-weight: 700;
+}
+
+.btn-close {
+  background: rgba(255,255,255,0.18);
+  border: none;
+
+  width: 42px;
+  height: 42px;
+
+  border-radius: 12px;
+  color: white;
+
+  display: flex;
+  align-items: center;
+  justify-content: center;
+
+  cursor: pointer;
+  transition: all 0.2s ease;
+}
+
+.btn-close:hover {
+  background: rgba(255,255,255,0.3);
+  transform: rotate(90deg);
+}
+
+/* =========================
+   FORMULARIO
+========================= */
+
+.modal-form {
+  padding: 30px;
+}
+
+.form-group {
+  display: flex;
+  flex-direction: column;
+  margin-bottom: 20px;
+}
+
+.form-group label {
+  margin-bottom: 8px;
+  font-weight: 600;
+  color: var(--text-dark);
+}
+
+.form-group input,
+.form-group select {
+  height: 52px;
+  border-radius: 14px;
+  border: 1px solid var(--gray-border);
+
+  padding: 0 16px;
+  font-size: 15px;
+
+  transition: all 0.2s ease;
+  background: white;
+}
+
+.form-group input:focus,
+.form-group select:focus {
+  outline: none;
+  border-color: var(--primary-orange);
+  box-shadow: 0 0 0 4px rgba(249,115,22,0.15);
+}
+
+/* =========================
+   FILAS
+========================= */
+
+.form-row {
+  display: grid;
+  grid-template-columns: repeat(3, 1fr);
+  gap: 18px;
+}
+
+/* =========================
+   SELECT + BOTÓN
+========================= */
+
+.select-with-action {
+  display: flex;
+  gap: 10px;
+}
+
+.select-with-action select {
+  flex: 1;
+}
+
+.btn-add-inline {
+  min-width: 52px;
+  border: none;
+  border-radius: 14px;
+
+  background: var(--primary-orange);
+  color: white;
+
+  display: flex;
+  align-items: center;
+  justify-content: center;
+
+  cursor: pointer;
+  transition: all 0.2s ease;
+}
+
+.btn-add-inline:hover {
+  background: var(--secondary-orange);
+  transform: scale(1.05);
+}
+
+/* =========================
+   FOOTER BOTONES
+========================= */
+
+.modal-actions {
+  margin-top: 30px;
+
+  display: flex;
+  justify-content: flex-end;
+  gap: 14px;
+}
+
+.btn-cancel,
+.btn-confirm {
+  border: none;
+  border-radius: 14px;
+
+  padding: 14px 22px;
+  font-size: 14px;
+  font-weight: 600;
+
+  cursor: pointer;
+  transition: all 0.2s ease;
+}
+
+.btn-cancel {
+  background: #f5f5f4;
+  color: var(--text-dark);
+}
+
+.btn-cancel:hover {
+  background: #e7e5e4;
+}
+
+.btn-confirm {
+  background: linear-gradient(
+    135deg,
+    var(--primary-orange),
+    var(--secondary-orange)
+  );
+
+  color: white;
+}
+
+.btn-confirm:hover {
+  transform: translateY(-2px);
+  box-shadow: var(--shadow-hover);
+}
+
+
+/* Contenedor de la celda de imagen */
+.productos-full-content td:first-child {
+    width: 60px; /* Ancho fijo para la columna de imagen */
+}
+
+/* Estilo de la imagen miniatura */
+.img-tabla-mini {
+    width: 45px;
+    height: 45px;
+    object-fit: cover; /* Recorta la imagen para que llene el cuadrado sin deformarse */
+    border-radius: 8px; /* Bordes redondeados para que se vea moderno */
+    border: 1px solid #eee;
+    display: block;
+}
+
+/* Evitar que otras celdas se expandan demasiado */
+.table-wrapper table {
+    table-layout: fixed; /* Opcional: ayuda a que las columnas respeten el ancho */
+    width: 100%;
+}
+
+.table-wrapper th, .table-wrapper td {
+    overflow: hidden;
+    text-overflow: ellipsis; /* Si el nombre es muy largo, pone "..." */
+    white-space: nowrap;
+}
+
+/* =========================
+   RESPONSIVE
+========================= */
+
+@media (max-width: 900px) {
+
+  .form-row {
+    grid-template-columns: 1fr;
+  }
+
+  .table-wrapper {
+    overflow-x: auto;
+  }
+
+  table {
+    min-width: 750px;
+  }
+
+  .modal-box {
+    max-width: 95%;
+  }
+}
+
+@media (max-width: 600px) {
+
+  .productos-container {
+    padding: 0px;
+  }
+
+  .btn-nuevo-header {
+    width: 100%;
+    justify-content: center;
+  }
+
+  .table-toolbar {
+    justify-content: center;
+  }
+
+  .modal-form {
+    padding: 22px;
+  }
+}
+/* ==========================================
+   RESPONSIVE MEJORADO TABLET
+========================================== */
+@media (max-width: 900px) {
+
+  .productos-full-content{
+    padding: 15px;
+  }
+
+  .table-toolbar{
+    flex-direction: column;
+    align-items: stretch;
+    gap: 12px;
+  }
+
+  .search-container{
+    width: 100%;
+  }
+
+  .input-search{
+    width: 100%;
+  }
+
+  .btn-nuevo-header,
+  .btn-confirm{
+    width: 100%;
+    justify-content: center;
+  }
+
+  .form-row{
+    grid-template-columns: 1fr;
+  }
+
+  .table-wrapper{
+    overflow-x: auto;
+  }
+
+  table{
+    min-width: 800px;
+  }
+
+  .modal-box{
+    width: 95%;
+    max-width: 95%;
+  }
+}
+
+/* ==========================================
+   RESPONSIVE CELULAR
+========================================== */
+@media (max-width: 480px) {
+
+  .productos-full-content{
+    padding: 10px;
+  }
+
+  .table-toolbar{
+    flex-direction: column;
+    gap: 10px;
+  }
+
+  .modal-overlay{
+    padding: 10px;
+  }
+
+  .modal-box{
+    width: 100%;
+    max-height: 90vh;
+    overflow-y: auto;
+    border-radius: 16px;
+  }
+
+  .modal-header{
+    padding: 15px;
+  }
+
+  .modal-header h3{
+    font-size: 18px;
+  }
+
+  .modal-form{
+    padding: 15px;
+  }
+
+  .form-group input,
+  .form-group select{
+    height: 45px;
+    font-size: 14px;
+  }
+
+  .modal-actions{
+    flex-direction: column;
+  }
+
+  .btn-cancel,
+  .btn-confirm{
+    width: 100%;
+  }
+
+  .actions-cell{
+    gap: 6px;
+  }
+
+  .btn-icon-edit,
+  .btn-icon-delete{
+    width: 34px;
+    height: 34px;
+  }
+
+  .img-tabla-mini{
+    width: 40px;
+    height: 40px;
+  }
+}
+/* ==========================================
+   NUEVOS ESTILOS PARA TARJETAS MÓVILES
+========================================== */
+
+/* Por defecto, la vista móvil está oculta en escritorio */
+.tarjetas-productos-movil {
+  display: none;
+  flex-direction: column;
+  gap: 14px;
+  width: 100%;
+}
+
+.tarjeta-prod-item {
+  background: var(--white);
+  border-radius: 20px;
+  padding: 16px;
+  box-shadow: var(--shadow-soft);
+  border: 1px solid var(--gray-border);
+  display: flex;
+  flex-direction: column;
+  gap: 12px;
+  transition: transform 0.2s ease;
+}
+
+.tarjeta-prod-header {
+  display: flex;
+  align-items: center;
+  gap: 14px;
+  border-bottom: 1px dashed #e5e7eb;
+  padding-bottom: 12px;
+}
+
+.tarjeta-prod-img {
+  width: 55px;
+  height: 55px;
+  object-fit: cover;
+  border-radius: 10px;
+  border: 1px solid #f1f5f9;
+}
+
+.tarjeta-prod-detalles-principales {
+  display: flex;
+  flex-direction: column;
+  gap: 6px;
+  flex: 1;
+}
+
+.tarjeta-prod-detalles-principales h4 {
+  margin: 0;
+  font-size: 15px;
+  line-height: 1.3;
+}
+
+.tarjeta-prod-body {
+  display: flex;
+  flex-direction: column;
+  gap: 8px;
+  padding: 2px 0;
+}
+
+.tarjeta-prod-fila {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  font-size: 14px;
+}
+
+.tarjeta-prod-actions {
+  display: flex;
+  gap: 10px;
+  margin-top: 4px;
+}
+
+/* Botones expandibles adaptados para interacción táctil en móvil */
+.flex-grow-btn {
+  flex: 1;
+  height: 42px !important;
+  font-size: 13px !important;
+  font-weight: 600;
+  gap: 6px;
+}
+
+.badge-oculto {
+  background: #f3f4f6;
+  padding: 2px 6px;
+  border-radius: 6px;
+}
+
+/* Ajuste fino para ordenar los botones de arriba en tablet/móvil */
+.toolbar-actions-group {
+  display: flex;
+  gap: 8px;
+  flex-wrap: wrap;
+  width: 100%;
+}
+
+/* ==========================================
+   REGLAS RESPONSIVAS INTERGRADAS 
+========================================== */
+
+@media (max-width: 768px) {
+  /* Ocultamos por completo el envoltorio de la tabla tradicional */
+  .tabla-escritorio {
+    display: none !important;
+  }
+
+  /* Activamos el contenedor de tarjetas Flexbox */
+  .tarjetas-productos-movil {
+    display: flex !important;
+  }
+
+  /* Distribución de la barra de búsqueda y botones superiores */
+  .table-toolbar {
+    flex-direction: column !important;
+    align-items: stretch !important;
+    gap: 12px;
+  }
+
+  .toolbar-actions-group .btn-confirm {
+    flex: 1;
+    min-width: 120px;
+    justify-content: center;
+  }
+}
+
+@media (max-width: 480px) {
+  .toolbar-actions-group {
+    flex-direction: column;
+  }
+  
+  .toolbar-actions-group .btn-confirm {
+    width: 100%;
+  }
+}
+/* ==========================================
+   CORRECCIÓN DE ALINEACIÓN EN ESCRITORIO
+========================================== */
+
+/* Asegura el comportamiento original en pantallas grandes */
+.table-toolbar {
+  display: flex;
+  justify-content: space-between; /* Envía el buscador a la izquierda y los botones a la derecha */
+  align-items: center;            /* Los alinea perfectamente en el eje vertical */
+  margin-bottom: 22px;
+  width: 100%;
+}
+
+.search-container {
+  flex: 1;
+  max-width: 400px; /* Evita que el buscador se estire infinitamente */
+}
+
+.input-search {
+  width: 100%;
+  height: 48px; /* O el tamaño de altura que uses en tus inputs */
+}
+
+/* Contenedor de botones en escritorio */
+.toolbar-actions-group {
+  display: flex;
+  align-items: center;
+  gap: 12px;       /* Separación uniforme entre los 3 botones */
+  width: auto;     /* Evita que ocupe todo el ancho en escritorio */
+}
+
+.toolbar-actions-group .btn-confirm {
+  width: auto;     /* Conserva el tamaño propio de cada botón basado en su texto */
+  white-space: nowrap; 
+}
+
+
+/* ==========================================
+   ADAPTACIÓN EXCLUSIVA PARA MÓVILES (BREAKPOINTS)
+========================================== */
+
+@media (max-width: 900px) {
+  .table-toolbar {
+    flex-direction: column !important; /* Se apilan en tablet/móvil */
+    align-items: stretch !important;
+    gap: 14px;
+  }
+
+  .search-container {
+    max-width: 100%; /* En móviles sí ocupa todo el ancho */
+  }
+
+  .toolbar-actions-group {
+    width: 100%;
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(140px, 1fr)); /* Distribución limpia en pantallas medianas */
+    gap: 10px;
+  }
+  
+  .toolbar-actions-group .btn-confirm {
+    width: 100%;
+    justify-content: center;
+  }
+}
+
+@media (max-width: 480px) {
+  .toolbar-actions-group {
+    display: flex;
+    flex-direction: column; /* Apilados verticalmente en celulares pequeños */
+  }
+}

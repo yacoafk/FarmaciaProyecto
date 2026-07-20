@@ -1,0 +1,378 @@
+/* Contenedor Principal */
+.compras-container {
+    height: 100vh; /* Altura total de la pantalla */
+    background-color: #fdf2f0; 
+    display: flex;
+    flex-direction: column;
+    font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif; 
+    overflow: hidden; /* Evita scroll doble en la página */
+}
+
+/* AREA DE CONTENIDO (SIDEBAR Y TABLAS) */
+.compras-content {
+    display: flex; 
+    gap: 20px;
+    padding: 20px;
+    flex: 1; /* Ocupa todo el espacio debajo del header */
+    min-height: 0; /* Importante para que el scroll interno funcione */
+}
+
+/* BARRA LATERAL IZQUIERDA */
+.compras-sidebar {
+    width: 280px; 
+    display: flex;
+    flex-direction: column;
+    gap: 15px;
+    padding: 25px;
+    background: white;
+    border-radius: 30px;
+    box-shadow: 0 10px 25px rgba(0,0,0,0.05);
+}
+
+/* BOTONES DEL SIDEBAR */
+.compras-sidebar button {
+    padding: 15px;
+    border-radius: 20px;
+    border: none;
+    cursor: pointer;
+    font-weight: 700;
+    transition: transform 0.2s;
+}
+.btn-anular { background: #f97316; color: white; }
+.btn-actualizar { background: #004d4d; color: white; }
+.btn-buscar { background: white; color: #008000; border: 2px solid #008000 !important; }
+.btn-cerrar { background: white; color: red; border: 2px solid red !important; margin-top: auto; }
+
+/* AREA PRINCIPAL DE TABLAS */
+.compras-main {
+    flex: 1; 
+    display: flex;
+    flex-direction: column;
+    gap: 20px;
+    width: 100%; /* Asegura que el contenedor principal ocupe todo el ancho */
+}
+
+/* CADA UNA DE LAS DOS TABLAS */
+.table-wrapper {
+    background: white;
+    border-radius: 30px;
+    padding: 20px;
+    box-shadow: 0 10px 25px rgba(0,0,0,0.05);
+    flex: 1; 
+    width: 100%; /* Fuerza a que el recuadro blanco se estire de izquierda a derecha */
+    box-sizing: border-box; /* Evita que el padding extra de las tablas las saque de la pantalla */
+    overflow-y: auto;
+    min-height: 0;
+}
+
+table {
+    width: 100%; /* La tabla DEBE ocupar el 100% del wrapper */
+    border-collapse: separate;
+    border-spacing: 0;
+}
+
+thead th {
+    background: #f97316;
+    color: white;
+    padding: 15px;
+    font-weight: bold;
+    text-align: center;
+    position: sticky;
+    top: 0;
+}
+
+/* Bordes redondeados para el header */
+thead th:first-child { border-top-left-radius: 15px; }
+thead th:last-child { border-top-right-radius: 15px; }
+
+tbody td {
+    padding: 12px;
+    text-align: center;
+    border-bottom: 2px solid white; 
+    background: #f1f5f9; 
+    color: #333;
+}
+
+.filter-group {
+    display: flex;
+    flex-direction: column;
+    gap: 10px;
+}
+.filter-group input {
+    padding: 12px;
+    border-radius: 12px;
+    border: 1px solid #ddd;
+    background: #f1f5f9;
+}
+/* =========================
+   RESPONSIVE TABLET
+========================= */
+@media (max-width: 1024px) {
+
+    .compras-content {
+        flex-direction: column;
+    }
+
+    .compras-sidebar {
+        width: 100%;
+        border-radius: 20px;
+        padding: 20px;
+    }
+
+    .compras-main {
+        width: 100%;
+    }
+}
+
+/* =========================
+   RESPONSIVE MÓVIL
+========================= */
+@media (max-width: 768px) {
+
+    .compras-container {
+        height: auto;
+        overflow: auto;
+    }
+
+    .compras-content {
+        flex-direction: column;
+        padding: 12px;
+        gap: 12px;
+    }
+
+    .compras-sidebar {
+        width: 100%;
+        padding: 15px;
+        border-radius: 20px;
+    }
+
+    .compras-sidebar button {
+        width: 100%;
+        padding: 12px;
+        font-size: 14px;
+    }
+
+    .compras-main {
+        width: 100%;
+        gap: 12px;
+    }
+
+    .table-wrapper {
+        width: 100%;
+        overflow-x: auto;
+        border-radius: 20px;
+        padding: 12px;
+    }
+
+    table {
+        min-width: 700px;
+    }
+
+    thead th {
+        padding: 12px;
+        font-size: 13px;
+    }
+
+    tbody td {
+        padding: 10px;
+        font-size: 13px;
+    }
+
+    .filter-group input {
+        width: 100%;
+        box-sizing: border-box;
+    }
+}
+
+/* =========================
+   RESPONSIVE CELULARES PEQUEÑOS
+========================= */
+@media (max-width: 480px) {
+
+    .compras-content {
+        padding: 8px;
+    }
+
+    .compras-sidebar {
+        padding: 12px;
+    }
+
+    .compras-sidebar button {
+        font-size: 13px;
+        padding: 10px;
+    }
+
+    .table-wrapper {
+        padding: 8px;
+    }
+
+    table {
+        min-width: 600px;
+    }
+
+    thead th {
+        font-size: 12px;
+        padding: 10px;
+    }
+
+    tbody td {
+        font-size: 12px;
+        padding: 8px;
+    }
+
+    .filter-group input {
+        padding: 10px;
+        font-size: 13px;
+    }
+}
+/* ==========================================================================
+   ESTILOS NUEVOS PARA TARJETAS RESPONSIVE (MÓVIL) - POR DEFECTO OCULTOS
+   ========================================================================== */
+.cards-movil-container {
+    display: none; /* Se oculta en modo escritorio */
+    flex-direction: column;
+    gap: 12px;
+    width: 100%;
+    margin-top: 10px;
+}
+
+.card-item-movil {
+    background: #ffffff;
+    border: 1px solid #e2e8f0;
+    border-radius: 16px;
+    padding: 16px;
+    box-shadow: 0 4px 6px -1px rgba(0, 0, 0, 0.05);
+    transition: all 0.2s ease;
+    cursor: pointer;
+}
+
+/* Efecto cuando la tarjeta es seleccionada */
+.card-item-movil.card-seleccionada {
+    border-color: #2980b9;
+    background-color: #ebf5fb;
+    box-shadow: 0 4px 12px rgba(41, 128, 185, 0.15);
+}
+
+.card-movil-header {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    border-bottom: 1px dashed #e2e8f0;
+    padding-bottom: 8px;
+    margin-bottom: 8px;
+}
+
+.card-id {
+    font-weight: bold;
+    color: #475569;
+    font-size: 14px;
+}
+
+/* Color verde distintivo para montos igual al modelo de Ventas */
+.card-total {
+    font-weight: bold;
+    color: #27ae60; 
+    font-size: 16px;
+}
+
+.card-total-sub {
+    font-weight: bold;
+    color: #2980b9;
+    font-size: 15px;
+}
+
+.card-movil-body p {
+    margin: 4px 0;
+    font-size: 13px;
+    color: #334155;
+    text-align: left; /* Alineación limpia a la izquierda */
+}
+
+.card-fecha {
+    color: #64748b !important;
+    font-size: 12px !important;
+}
+
+.card-producto-titulo {
+    font-weight: 600;
+    color: #1e293b;
+    text-align: left;
+}
+
+/* Estilo para las sub-tarjetas de detalle de productos */
+.sub-card {
+    border-left: 4px solid #f97316; /* Línea naranja de acento que combina con MediExpress */
+}
+
+.card-vacia {
+    text-align: center;
+    padding: 20px;
+    color: #64748b;
+    background: #f8fafc;
+    border-radius: 12px;
+    font-size: 14px;
+}
+
+.text-danger {
+    color: #e74c3c;
+}
+
+/* ==========================================
+   CELULAR (Media Query 768px para Compras)
+========================================== */
+@media (max-width: 768px) {
+  /* ... tus otras configuraciones de contenedores móviles ... */
+
+  .tarjetas-movil {
+    display: flex;
+    flex-direction: column;
+    gap: 12px;
+    margin-top: 10px;
+  }
+
+  /* --- DISEÑO DE TARJETA DEL HISTORIAL DE COMPRAS --- */
+  .tarjeta-compra {
+    background: #f8fafc;
+    border: 2px solid #e2e8f0;
+    border-radius: 16px;
+    padding: 14px;
+    cursor: pointer;
+    transition: all 0.2s ease;
+    text-align: left;
+  }
+
+  /* Este contenedor separa el ID a la izquierda y el Monto a la derecha */
+  .tarjeta-header {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    border-bottom: 1px solid #e2e8f0;
+    padding-bottom: 8px;
+    margin-bottom: 8px;
+  }
+
+  .tarjeta-id {
+    font-weight: bold;
+    color: #475569;
+  }
+
+  /* Color personalizado para compras (puedes usar un color neutro oscuro o rojo/naranja según prefieras) */
+  .tarjeta-total-compra {
+    font-weight: 800;
+    color: #1e293b; 
+    font-size: 15px;
+  }
+
+  .tarjeta-body p {
+    margin: 4px 0;
+    font-size: 13px;
+    color: #334155;
+  }
+
+  /* Estado seleccionado idéntico al de Ventas */
+  .tarjeta-seleccionada {
+    background: #ebf5fb;
+    border-color: #3498db;
+    box-shadow: 0 4px 12px rgba(52, 152, 219, 0.15);
+  }
+}

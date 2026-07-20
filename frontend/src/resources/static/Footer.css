@@ -1,0 +1,65 @@
+/* Footer.css */
+
+.main-footer {
+    width: 100%;
+    background-color: #111827;
+    padding: 2rem 0;
+    margin-top: 50px;
+    border-top: 1px solid rgba(255, 255, 255, 0.1);
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+
+.footer-container {
+    max-width: 1200px;
+    width: 90%;
+    text-align: center;
+}
+
+.footer-text {
+    color: #FFFFFF !important;
+    font-size: 0.95rem;
+    letter-spacing: 0.5px;
+    margin: 0;
+    opacity: 0.9;
+}
+
+.brand-highlight {
+    font-weight: 700;
+    color: #3b82f6;
+}
+
+.footer-text:hover {
+    opacity: 1;
+    transition: opacity 0.3s ease;
+}
+
+/* ========================= */
+/* RESPONSIVE */
+/* ========================= */
+
+@media (max-width: 768px) {
+
+    .main-footer {
+        padding: 1.5rem 1rem;
+    }
+
+    .footer-container {
+        width: 95%;
+    }
+
+    .footer-text {
+        font-size: 0.85rem;
+        line-height: 1.5;
+    }
+
+}
+
+@media (max-width: 480px) {
+
+    .footer-text {
+        font-size: 0.8rem;
+    }
+
+}
